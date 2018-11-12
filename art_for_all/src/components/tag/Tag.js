@@ -6,7 +6,7 @@ class Tag extends React.Component{
 
     render(){
         return(
-            <span className='badge badge-primary box'>{this.props.tagName}</span>
+            <span className='badge badge-primary tag'>{this.props.tagName}</span>
         )
     }
 }
