@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Tag from '../tag/Tag';
+import './TagBox.css';
 
 class TagBox extends React.Component{
 
@@ -8,26 +9,35 @@ class TagBox extends React.Component{
         super(props);
         this.state = {
 
-            tagsName: ["eita", "mds", "ficou", "uma", "merda"]
+            tagsName: ["eita", "mds", "ficou", "uma", "merda", "ssssss", "jjjjj", "aaaaaaaaaaaaaaa"]
         }
     }
 
     renderTags(){ 
 
-        var tags = this.state.tagsName.map((name) =>{
-
-            return (<li key={name}><Tag tagsName="name"></Tag></li>)
+        var tags = this.state.tagsName.map((name, num) =>{
+            return ( <Tag key={num} tagName={name}></Tag>)
         })
         return (tags);
+    }
 
+    addTag(tagName){
+
+        var tags = this.state.tagsName.concat(tagName);
+        this.setState({
+            tagsName: tags
+        })
     }
 
     render(){
         return(
             <div>
-            <section className="container flex-wrap">
-                <Tag tagName="masoq?"></Tag>
-            </section>
+                <div className="container row">Tags
+                    <button className="btn btn-info button" onClick={ () => this.addTag('newTAG')}>New</button>
+                </div>
+                <section className="container flex-wrap">
+                <div>{this.renderTags()}</div>
+                </section>
             </div>
         )
     }
