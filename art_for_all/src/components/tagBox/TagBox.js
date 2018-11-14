@@ -2,6 +2,7 @@ import React from 'react';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Tag from '../tag/Tag';
 import './TagBox.css';
+import NameFild from '../forms/nameFild/NameFild';
 
 class TagBox extends React.Component{
 
@@ -11,6 +12,7 @@ class TagBox extends React.Component{
 
             tagsName: ["eita", "mds", "ficou", "uma", "merda", "ssssss", "jjjjj", "aaaaaaaaaaaaaaa"]
         }
+        this.addTag = this.addTag.bind(this);
     }
 
     renderTags(){ 
@@ -29,13 +31,21 @@ class TagBox extends React.Component{
         })
     }
 
+    handleChange(event){
+        this.setState({
+            inputData: event.target.value
+        })
+    }
+
     render(){
         return(
-            <div>
-                <div className="container row">Tags
+            <div className="container">
+                <div className="row">Tags
                     <button className="btn btn-info button" onClick={ () => this.addTag('newTAG')}>New</button>
                 </div>
-                <section className="container flex-wrap">
+                <button className="btn btn-outline-success" onClick={() => this.addTag('CUU')}>Add</button>
+                <NameFild onClick={this.addTag} handleChange={this.handleChange}></NameFild>
+                <section className="flex-wrap">
                 <div>{this.renderTags()}</div>
                 </section>
             </div>
