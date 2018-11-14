@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import  '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Tag from '../tag/Tag';
 import './TagBox.css';
 import NameFild from '../forms/nameFild/NameFild';
