@@ -10,7 +10,8 @@ class TagBox extends React.Component{
         super(props);
         this.state = {
 
-            tagsName: ["eita", "mds", "ficou", "uma", "merda", "ssssss", "jjjjj", "aaaaaaaaaaaaaaa"]
+            tagsName: [],
+            open: false
         }
         this.addTag = this.addTag.bind(this);
     }
@@ -30,10 +31,14 @@ class TagBox extends React.Component{
             tagsName: tags
         })
     }
+    
+    openNameFild(){
+        var tags = this.state.tagsName;
+        var open = !(this.state.open);
 
-    handleChange(event){
         this.setState({
-            inputData: event.target.value
+            tagsName: tags,
+            open: open
         })
     }
 
@@ -41,12 +46,11 @@ class TagBox extends React.Component{
         return(
             <div className="container">
                 <div className="row">Tags
-                    <button className="btn btn-info button" onClick={ () => this.addTag('newTAG')}>New</button>
+                    <button className="btn btn-info button" onClick={() => this.openNameFild()}>New</button>
                 </div>
-                <button className="btn btn-outline-success" onClick={() => this.addTag('CUU')}>Add</button>
-                <NameFild onClick={this.addTag} handleChange={this.handleChange}></NameFild>
+                <NameFild onClick={this.addTag} open={this.state.open}></NameFild>
                 <section className="flex-wrap">
-                <div>{this.renderTags()}</div>
+                    <div>{this.renderTags()}</div>
                 </section>
             </div>
         )

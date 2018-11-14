@@ -1,5 +1,6 @@
 import React from "react";
 import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import './nameFild.css';
 
 class NameFild extends React.Component{
 
@@ -18,14 +19,18 @@ class NameFild extends React.Component{
     }
 
     render(){
-        return(
-            <form>
-                <label>Name</label>
-                <input type="text" value={this.state.inputData} onChange={this.props.handleChange} placeholder="tag name"></input>
-                <button className="btn btn-outline-success" onClick={() => this.props.onClick(this.state.inputData)}>Add</button>
-            </form>
-        )
+
+        if(this.props.open){
+            return(
+                <div className="input-group mb-3 space">
+                    <input type="text" className="form-control" placeholder="Tag Name" aria-label="Recipient's username" aria-describedby="basic-addon2" onChange={this.handleChange}></input>
+                    <div className="input-group-append">
+                        <button className="btn btn-outline-success" type="button" onClick={() => this.props.onClick(this.state.inputData)}>Add</button>
+                    </div>
+                </div>
+            )
+        }else return null;
     }
 }
 
-export default NameFild
+export default NameFild;
