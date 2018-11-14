@@ -32,6 +32,10 @@ class Info extends React.Component{
                         <label className="label-style">Description:</label>
                     </div>
                     <p>Description: its a art to express the end of the cartoon</p>
+                    <div className="back">
+                        <label className="label-style">Contact:</label>
+                    </div>
+                    <p>thaynnara.goncalves@ccc.ufcg.edu.br</p>
                 </details>
                 <TagBox></TagBox>
             </div>
