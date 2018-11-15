@@ -11,6 +11,7 @@ class Info extends React.Component{
         const AUTHOR = 1;
         const COLLECTION = 2;
         const DESCRIPTION = 3;
+        const CONTACT = 4;
 
         return(
             <div className="container note">
@@ -19,23 +20,23 @@ class Info extends React.Component{
                     <div className="back">
                         <label className="label-style">Art Name:</label>
                     </div>
-                    <p>Adventure ends</p>
+                    <p>{this.props.info[ART_NAME]}</p>
                     <div className="back ">
                         <label className="label-style">Author:</label>
                     </div>
-                    <p>thay@ra</p>
+                    <p>{this.props.info[AUTHOR]}</p>
                     <div className="back">
                         <label className="label-style">Collection:</label>
                     </div>
-                    <p>Adventure time</p>
+                    <p>{this.props.info[COLLECTION]}</p>
                     <div className="back">
                         <label className="label-style">Description:</label>
                     </div>
-                    <p>Description: its a art to express the end of the cartoon</p>
+                    <p>{this.props.info[DESCRIPTION]}</p>
                     <div className="back">
                         <label className="label-style">Contact:</label>
                     </div>
-                    <p>thaynnara.goncalves@ccc.ufcg.edu.br</p>
+                    <p>{this.props.info[CONTACT]}</p>
                 </details>
                 <TagBox></TagBox>
             </div>

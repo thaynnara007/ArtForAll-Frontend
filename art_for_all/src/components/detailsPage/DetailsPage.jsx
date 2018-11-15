@@ -5,6 +5,13 @@ import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './DetailsPage.css';
 
 class DetailsPage extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+
+            information:["Adventure ends", "th@y", "Adventure Time", " Its a art to express the end of the cartoon", "thaynnara.goncalves@ccc.ufcg.edu.br"]
+        }
+    }
 
     render(){
         return(
@@ -13,7 +20,7 @@ class DetailsPage extends React.Component{
                     <div className="flex">
                         <img className="img-size" src={image} alt="adventure ends"></img>
                         <section className="info">
-                            <Info></Info>
+                            <Info info={this.state.information}></Info>
                         </section>
                     </div>
                 </div>
