@@ -44,7 +44,7 @@ class TagBox extends React.Component{
 
     render(){
         return(
-            <div className="container">
+            <div className="container white">
                 <div className="row">Tags
                     <button className="btn btn-info button" onClick={() => this.openNameFild()}>New</button>
                 </div>
