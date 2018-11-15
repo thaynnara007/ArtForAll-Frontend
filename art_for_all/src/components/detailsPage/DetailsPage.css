@@ -1,0 +1,20 @@
+.img-size{
+    height: 46em;
+    width: 40em;
+    margin: 10px;
+    border-radius: 10px;
+    
+}
+
+.float-rigth{
+    float: right;
+}
+
+.max{
+    max-width: 1160px;
+    border: none;
+}
+
+.flex-wrap{
+    flex-wrap: wrap;
+}
