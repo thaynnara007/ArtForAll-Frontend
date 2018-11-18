@@ -48,7 +48,7 @@ class TagBox extends React.Component{
                 <div className="row">Tags
                     <button className="btn btn-info button" onClick={() => this.openNameFild()}>New</button>
                 </div>
-                <NameFild onClick={this.addTag} open={this.state.open}></NameFild>
+                <NameFild buttonName='Add' placeHolder="Tags name" onClick={this.addTag} open={this.state.open}></NameFild>
                 <section className="flex-wrap">
                     <div>{this.renderTags()}</div>
                 </section>

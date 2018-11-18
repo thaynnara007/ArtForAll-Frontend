@@ -23,9 +23,9 @@ class NameFild extends React.Component{
         if(this.props.open){
             return(
                 <div className="input-group mb-3 space">
-                    <input type="text" className="form-control" placeholder="Tag Name" aria-label="Recipient's username" aria-describedby="basic-addon2" onChange={this.handleChange}></input>
+                    <input type="text" className="form-control" placeholder={this.props.placeHolder} aria-label="Recipient's username" aria-describedby="basic-addon2" onChange={this.handleChange}></input>
                     <div className="input-group-append">
-                        <button className="btn btn-outline-success" type="button" onClick={() => this.props.onClick(this.state.inputData)}>Add</button>
+                        <button className="btn btn-outline-info" type="button" onClick={() => this.props.onClick(this.state.inputData)}>{this.props.buttonName}</button>
                     </div>
                 </div>
             )
