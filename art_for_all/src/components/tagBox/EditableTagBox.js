@@ -10,34 +10,22 @@ class EditableTagBox extends React.Component{
         super(props);
         this.state = {
 
-            tagsName: [],
             open: false
         }
-        this.addTag = this.addTag.bind(this);
     }
 
-    renderTags(){ 
-
-        var tags = this.state.tagsName.map((name, num) =>{
+    renderTags(tagsName){ 
+        
+        var tags = tagsName.map((name, num) =>{
             return ( <Tag key={num} tagName={name}></Tag>)
         })
         return (tags);
     }
-
-    addTag(tagName){
-
-        var tags = this.state.tagsName.concat(tagName);
-        this.setState({
-            tagsName: tags
-        })
-    }
     
     openNameFild(){
-        var tags = this.state.tagsName;
         var open = !(this.state.open);
 
         this.setState({
-            tagsName: tags,
             open: open
         })
     }
@@ -48,9 +36,9 @@ class EditableTagBox extends React.Component{
                 <div className="row">Tags
                     <button className="btn btn-info button" onClick={() => this.openNameFild()}>New</button>
                 </div>
-                <NameFild buttonName='Add' placeHolder="Tags name" onClick={this.addTag} open={this.state.open}></NameFild>
+                <NameFild buttonName='Add' placeHolder="Tags name" onClick={this.props.addTag} open={this.state.open}></NameFild>
                 <section className="flex-wrap">
-                    <div>{this.renderTags()}</div>
+                    <div>{this.renderTags(this.props.tagsName)}</div>
                 </section>
             </div>
         )

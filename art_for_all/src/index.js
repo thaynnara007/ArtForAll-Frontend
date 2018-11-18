@@ -8,8 +8,9 @@ import TagBox from './components/tagBox/TagBox';
 import * as serviceWorker from './serviceWorker';
 import ETagBox from './components/tagBox/EditableTagBox';
 import InputFild from './components/forms/input/InputFild';
+import EditableInfoArt from './components/info/EditableInfoArt';
 
-ReactDOM.render(<InputFild/>, document.getElementById('root'));
+ReactDOM.render(<EditableInfoArt/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
