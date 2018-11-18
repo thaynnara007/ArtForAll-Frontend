@@ -1,5 +1,4 @@
 import React from 'react';
-import './EditableInfoArt.css';
 import InputFild from '../forms/input/InputFild';
 import EditableTagBox from '../tagBox/EditableTagBox';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
