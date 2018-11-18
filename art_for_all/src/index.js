@@ -4,9 +4,11 @@ import './index.css';
 import App from './App';
 import DetailsArtPage from './components/detailsPage/DetailsArtPage';
 import Navbar from './components/navbar/Navbar';
+import TagBox from './components/tagBox/TagBox';
 import * as serviceWorker from './serviceWorker';
+import ETagBox from './components/tagBox/EditableTagBox';
 
-ReactDOM.render(<DetailsArtPage />, document.getElementById('root'));
+ReactDOM.render(<DetailsArtPage/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

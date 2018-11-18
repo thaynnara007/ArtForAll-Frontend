@@ -9,7 +9,8 @@ class DetailsArtPage extends React.Component{
         super(props);
         this.state = {
 
-            information:["Adventure ends", "th@y", "Adventure Time", " Its a art to express the end of the cartoon", "thaynnara.goncalves@ccc.ufcg.edu.br"]
+            information:["Adventure ends", "th@y", "Adventure Time", " Its a art to express the end of the cartoon", "thaynnara.goncalves@ccc.ufcg.edu.br"],
+            tagsName: ['Adventure time', "Finn", "Blood Sword", "Joshua"]
         }
     }
 
@@ -20,7 +21,7 @@ class DetailsArtPage extends React.Component{
                     <div className="flex">
                         <img className="img-size" src={image} alt="adventure ends"></img>
                         <section className="info">
-                            <InfoArt info={this.state.information}></InfoArt>
+                            <InfoArt info={this.state.information} tagsName={this.state.tagsName}></InfoArt>
                         </section>
                     </div>
                 </div>
