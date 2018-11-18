@@ -1,9 +1,9 @@
 import React from 'react';
-import TagBox from '../tagBox/TagBox';
-import './Info.css';
+import EditableTagBox from '../tagBox/EditableTagBox';
+import './InfoArt.css';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-class Info extends React.Component{
+class InfoArt extends React.Component{
 
     render(){
 
@@ -38,10 +38,10 @@ class Info extends React.Component{
                     </div>
                     <p>{this.props.info[CONTACT]}</p>
                 </details>
-                <TagBox></TagBox>
+                <EditableTagBox></EditableTagBox>
             </div>
         )
     }
 }
 
-export default Info;
+export default InfoArt;

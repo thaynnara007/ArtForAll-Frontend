@@ -1,6 +1,5 @@
 import React from "react";
 import NameFild from '../forms/nameFild/NameFild';
-import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './Navbar.css';
 
 class Navbar extends React.Component{

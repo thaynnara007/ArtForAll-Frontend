@@ -1,10 +1,10 @@
 import React from 'react';
 import  '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Tag from '../tag/Tag';
-import './TagBox.css';
+import './EditableTagBox.css';
 import NameFild from '../forms/nameFild/NameFild';
 
-class TagBox extends React.Component{
+class EditableTagBox extends React.Component{
 
     constructor(props){
         super(props);
@@ -57,4 +57,4 @@ class TagBox extends React.Component{
     }
 }
 
-export default TagBox;
+export default EditableTagBox;

@@ -1,10 +1,10 @@
 import React from 'react';
-import Info from '../info/Info';
+import InfoArt from '../info/InfoArt';
 import image from '../../adventure.jpg';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import './DetailsPage.css';
+import './DetailsArtPage.css';
 
-class DetailsPage extends React.Component{
+class DetailsArtPage extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -20,7 +20,7 @@ class DetailsPage extends React.Component{
                     <div className="flex">
                         <img className="img-size" src={image} alt="adventure ends"></img>
                         <section className="info">
-                            <Info info={this.state.information}></Info>
+                            <InfoArt info={this.state.information}></InfoArt>
                         </section>
                     </div>
                 </div>
@@ -28,4 +28,4 @@ class DetailsPage extends React.Component{
     }
 }
 
-export default DetailsPage;
+export default DetailsArtPage;

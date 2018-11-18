@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import DetailsPage from './components/detailsPage/DetailsPage';
+import DetailsArtPage from './components/detailsPage/DetailsArtPage';
 import Navbar from './components/navbar/Navbar';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<Navbar />, document.getElementById('root'));
+ReactDOM.render(<DetailsArtPage />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
