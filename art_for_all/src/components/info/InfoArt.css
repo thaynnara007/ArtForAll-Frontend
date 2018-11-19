@@ -8,8 +8,8 @@ details {
     padding: 1em;
     border: 1px solid hsla(162, 76%, 32%, .3);
     color: black;
-    border-radius: 5px;
-}
+    border-radius: 5px; 
+} 
 
 details > p {
     background: white;

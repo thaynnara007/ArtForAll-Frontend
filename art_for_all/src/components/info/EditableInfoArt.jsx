@@ -1,4 +1,5 @@
 import React from 'react';
+import './EditableInfoArt.css';
 import InputFild from '../forms/input/InputFild';
 import EditableTagBox from '../tagBox/EditableTagBox';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -111,23 +112,23 @@ class EditableInfoArt extends React.Component{
             <div className="container note">
             <details className="font">
                 <summary className="font-weight-bold summary-margin">Informations</summary>
-                <div className="back">
+                <div className="border-style">
                     <label className="label-style">Art Name:</label>
                 </div>
                 <InputFild handleChange={this.handleArtName} placeHolder={this.state.info[0]}></InputFild>
-                <div className="back ">
+                <div className="border-style">
                     <label className="label-style">Author:</label>
                 </div>
                 <InputFild handleChange={this.handleAuthor} placeHolder={this.state.info[1]}></InputFild>
-                <div className="back">
+                <div className="border-style">
                     <label className="label-style">Collection:</label>
                 </div>
                 <InputFild handleChange={this.handleCollection} placeHolder={this.state.info[2]}></InputFild>
-                <div className="back">
+                <div className="border-style">
                     <label className="label-style">Description:</label>
                 </div>
                 <InputFild handleChange={this.handleDescription} placeHolder={this.state.info[3]}></InputFild>
-                <div className="back">
+                <div className="border-style">
                     <label className="label-style">Contact:</label>
                 </div>
                 <InputFild handleChange={this.handleContact} placeHolder={this.state.info[4]}></InputFild>
