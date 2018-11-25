@@ -9,7 +9,6 @@ class EditableTagBox extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-
             open: false
         }
     }
