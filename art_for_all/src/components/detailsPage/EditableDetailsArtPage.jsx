@@ -1,5 +1,6 @@
 import React from 'react';
 import InfoArt from '../info/InfoArt';
+import EditableInfoArt from '../info/EditableInfoArt';
 import image from '../../adventure.jpg';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './EditableDetailsArtPage.css';
@@ -22,7 +23,7 @@ class EditableDetailsArtPage extends React.Component{
                     <div className="flex">
                         <img className="img-size" src={image} alt="adventure ends"></img>
                         <section className="info">
-                            <InfoArt info={this.state.information} tagsName={this.state.tagsName}></InfoArt>
+                            <EditableInfoArt info={this.state.information} tagsName={this.state.tagsName}></EditableInfoArt>
                         </section>
                     </div>
                 </div>
