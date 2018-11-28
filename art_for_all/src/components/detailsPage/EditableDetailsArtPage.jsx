@@ -1,7 +1,7 @@
 import React from 'react';
 import InfoArt from '../info/InfoArt';
 import EditableInfoArt from '../info/EditableInfoArt';
-import image from '../../TG5CxZ.jpg';
+import image from '../../image-not-found.png';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './EditableDetailsArtPage.css';
 import './DetailsArtPage.css';
