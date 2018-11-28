@@ -1,0 +1,13 @@
+.saveButton{
+    margin: 0.6em 0.9em;
+    width: 19em;
+}
+
+.browser-button{
+    background: white;
+    width: 40em;
+    height: 3em;
+    border: solid 1px paleturquoise;
+    border-radius: 5px;
+    margin: 0.5em 1em;
+}
