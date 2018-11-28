@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import EditableDetailsArtPage from './components/detailsPage/EditableDetailsArtPage';
 import Navbar from './components/navbar/Navbar'
-import SignUpForm from './components/forms/signUp/signUpForm';
 import * as serviceWorker from './serviceWorker';
 import SignUpPage from './components/signUpPage/SignUpPage';
 
