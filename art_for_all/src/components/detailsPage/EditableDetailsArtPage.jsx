@@ -43,7 +43,7 @@ class EditableDetailsArtPage extends React.Component{
             file: file
         })
     }
-
+/*
     componentDidMount() {
         fetch('http://localhost:8080/user/miuda06/profile/myArts/adventureTime')
             .then(response => response.json())
@@ -57,7 +57,7 @@ class EditableDetailsArtPage extends React.Component{
                     tagsName: tags,
                     })});
     }
-
+*/
     renderImage(){
         
         if (this.state.file)
