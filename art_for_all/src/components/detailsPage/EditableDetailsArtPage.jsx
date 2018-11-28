@@ -32,12 +32,30 @@ class EditableDetailsArtPage extends React.Component{
     }
 
     handleChange(event){
+
+        var file = undefined;
+        if(event.target.files[0]) file = URL.createObjectURL(event.target.files[0])
+        else file = this.state.file;
         
         this.setState({
             information: this.state.information,
             tagsName: this.state.tagsName,
-            file: URL.createObjectURL(event.target.files[0])
+            file: file
         })
+    }
+
+    componentDidMount() {
+        fetch('http://localhost:8080/user/miuda06/profile/myArts/adventureTime')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                var tags =  data[0].tags;
+                var info = [data[0].name]
+                
+                this.setState({ 
+                    information: info,
+                    tagsName: tags,
+                    })});
     }
 
     renderImage(){
