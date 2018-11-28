@@ -13,7 +13,7 @@ class Navbar extends React.Component{
                 </div>
                 <ul className="list">
                     <li className="left"><a className="item decoration" href="#">Login</a></li>
-                    <li className="left"><a className="item decoration" href="#">SingUp</a></li>
+                    <li className="left"><a className="item decoration" href="#">SignUp</a></li>
                     <li className="left"><a className="item decoration" href="#">About</a></li>
                 </ul>
                 </div>

@@ -1,10 +1,10 @@
 import React from 'react'
-import './SingUpPage.css'
-import SingUpForm from '../forms/singUp/singUpForm'
+import './SignUpPage.css'
+import SingUpForm from '../forms/signUp/signUpForm'
 import Navbar from '../navbar/Navbar'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-class SingUpPage extends React.Component{
+class SignUpPage extends React.Component{
 
     render(){
         return(
@@ -17,4 +17,4 @@ class SingUpPage extends React.Component{
 
 }
 
-export default SingUpPage
+export default SignUpPage
