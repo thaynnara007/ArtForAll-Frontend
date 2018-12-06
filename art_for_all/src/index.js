@@ -8,7 +8,7 @@ import * as serviceWorker from './serviceWorker';
 import SignUpPage from './components/signUpPage/SignUpPage';
 
 
-ReactDOM.render(<SignUpPage/>, document.getElementById('root'));
+ReactDOM.render(<EditableDetailsArtPage/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
