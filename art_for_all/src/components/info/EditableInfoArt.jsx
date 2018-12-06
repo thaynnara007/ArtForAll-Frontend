@@ -105,7 +105,7 @@ class EditableInfoArt extends React.Component{
                 </div>
                 <InputFild handleChange={this.handleContact} placeHolder={this.props.info[4]}></InputFild>
             </details>
-            <EditableTagBox addTag={this.props.addTag} tagsName={this.props.tagsName} handleChange={this.props.handleChange}></EditableTagBox>
+            <EditableTagBox empty={this.props.empty} addTag={this.props.addTag} deleteTag={this.props.deleteTag} tagsName={this.props.tagsName} handleChange={this.props.handleChange}></EditableTagBox>
         </div>
         )
     }

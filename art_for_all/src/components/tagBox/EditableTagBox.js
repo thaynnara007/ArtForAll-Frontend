@@ -20,6 +20,20 @@ class EditableTagBox extends React.Component{
         })
         return (tags);
     }
+
+    renderButtons(empty){
+
+        if(!empty){ 
+            return (
+            <div>
+                <button className="btn btn-info button newButton" onClick={() => this.openNameFild()}>New</button>
+                <button className="btn btn-danger button editableTagBox-button" onClick={this.props.deleteTag}>Delete</button>
+            </div>
+            )
+        }else{
+            return <button className="btn btn-info button newButton" style={{margin: ' 0 0 0 17em'}} onClick={() => this.openNameFild()}>New</button>
+        }
+    }
     
     openNameFild(){
         var open = !(this.state.open);
@@ -33,7 +47,7 @@ class EditableTagBox extends React.Component{
         return(
             <div className="container white">
                 <div className="row">Tags
-                    <button className="btn btn-info button" onClick={() => this.openNameFild()}>New</button>
+                    {this.renderButtons(this.props.empty)}
                 </div>
                 <NameFild buttonName='Add' placeHolder="Tags name" onClick={this.props.addTag} open={this.state.open} handleChange={this.props.handleChange} data="tag"></NameFild>
                 <section className="flex-wrap">

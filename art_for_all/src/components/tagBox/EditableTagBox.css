@@ -28,3 +28,12 @@
 .white{
 	background: white;
 }
+
+.editableTagBox-button{
+	margin-left: 0.5em;
+	border: none;
+}
+
+.newButton{
+	margin-left: 12em;
+}

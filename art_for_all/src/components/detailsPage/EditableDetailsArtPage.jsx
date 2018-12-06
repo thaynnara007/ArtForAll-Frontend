@@ -12,13 +12,15 @@ class EditableDetailsArtPage extends React.Component{
         this.state = {
 
             information:["Adventure ends", "th@y", "Adventure Time", " Its a art to express the end of the cartoon", "thaynnara.goncalves@ccc.ufcg.edu.br"],
-            tagsName: ['Adventure time', "Finn", "Blood Sword", "Joshua"],
+            tagsName: [],
             file: image,
-            tag:""
+            tag:"",
+            empty: true
         }
         this.addTag = this.addTag.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.renderImage = this.renderImage.bind(this);
+        this.deleteTag = this.deleteTag.bind(this);
     }
 
     addTag(){
@@ -27,6 +29,21 @@ class EditableDetailsArtPage extends React.Component{
             var newTagsName = this.state.tagsName.concat(this.state.tag);
             this.setState({
                 tagsName: newTagsName,
+                empty: false
+            })
+        }
+    }
+
+    deleteTag(){
+
+        if(this.state.tagsName){
+            var size = this.state.tagsName.length;
+            var newTagsName = this.state.tagsName.splice(0,size -1);
+            var empty = newTagsName.length == 0 || false;
+
+            this.setState({
+                tagsName: newTagsName,
+                empty: empty
             })
         }
     }
@@ -79,7 +96,7 @@ class EditableDetailsArtPage extends React.Component{
                             <input className="browser-button" type="file" onChange={ (event) => this.handleChange(event, "file")}></input> 
                         </div>
                         <section className="info">
-                            <EditableInfoArt info={this.state.information} tagsName={this.state.tagsName} addTag={this.addTag} handleChange={this.handleChange}></EditableInfoArt>
+                            <EditableInfoArt empty={this.state.empty} info={this.state.information} tagsName={this.state.tagsName} addTag={this.addTag} handleChange={this.handleChange} deleteTag={this.deleteTag}></EditableInfoArt>
                             <button className="btn btn-outline-primary btn-lg btn-block saveButton">Save</button>
                         </section> 
                     </div>
