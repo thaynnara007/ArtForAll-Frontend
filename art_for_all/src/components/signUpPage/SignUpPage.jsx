@@ -15,67 +15,11 @@ class SignUpPage extends React.Component{
             email:"",
             password:"",
         }
-
-        this.handleFirstName = this.handleFirstName.bind(this)
-        this.handleLastName = this.handleLastName.bind(this)
-        this.handleEmail = this.handleEmail.bind(this)
-        this.handleUserName = this.handleUserName.bind(this)
-        this.handlePassword = this.handlePassword.bind(this)
+        this.handleChange = this.handleChange.bind(this);
     }
 
-    handleFirstName(event){
-
-        this.setState({
-            firstName: event.target.value,
-            lastName: this.state.lastName,
-            userName: this.state.userName,
-            email: this.state.email,
-            password: this.state.password,
-        })
-    }
-
-    handleLastName(event){
-
-        this.setState({
-            firstName: this.state.firstName,
-            lastName: event.target.value,
-            userName: this.state.userName,
-            email: this.state.email,
-            password: this.state.password,
-        })
-    }
-
-    handleUserName(event){
-
-        this.setState({
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            userName: event.target.value,
-            email: this.state.email,
-            password: this.state.password,
-        })
-    }
-    
-    handleEmail(event){
-
-        this.setState({
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            userName:  this.state.userName,
-            email: event.target.value,
-            password: this.state.password,
-        })
-    }
-
-    handlePassword(event){
-
-        this.setState({
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            userName:  this.state.userName,
-            email: this.state.email,
-            password: event.target.value,
-        })
+    handleChange(event, data){
+        this.setState({[data]: event.target.value})
     }
 
     render(){
@@ -89,16 +33,16 @@ class SignUpPage extends React.Component{
                     </div>
                     <div className="singUpForm-space">
                         <label className="singUpForm-label">First name:</label>
-                        <Input handleChance={this.handleFirstName}></Input>
+                        <Input handleChange={this.handleChange} data="firstName"></Input>
                         <label className="singUpForm-label">Last name:</label>
-                        <Input handleChance={this.handleLastName}></Input>
+                        <Input handleChange={this.handleChange} data="lastName"></Input>
                         <label className="singUpForm-label">Username:</label>
-                        <Input handleChance={this.handleUserName}></Input>
+                        <Input handleChange={this.handleChange} data="userName"></Input>
                         <label className="singUpForm-label">Email:</label>
-                        <Input handleChance={this.handleEmail}></Input>
+                        <Input handleChange={this.handleChange} data="email"></Input>
                         <label className="singUpForm-label">Password:</label>
-                        <Input handleChance={this.handlePassword}></Input>
-                        <button type="button" class="btn btn-outline-success btn-lg btn-block spaace">Sign Up</button>
+                        <Input handleChange={this.handleChange} data="password"></Input>
+                        <button type="button" className="btn btn-outline-success btn-lg btn-block spaace">Sign Up</button>
                         <br></br>
                     </div>  
             </div>
