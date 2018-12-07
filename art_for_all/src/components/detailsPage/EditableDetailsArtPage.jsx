@@ -10,8 +10,11 @@ class EditableDetailsArtPage extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-
-            information:["Adventure ends", "th@y", "Adventure Time", " Its a art to express the end of the cartoon", "thaynnara.goncalves@ccc.ufcg.edu.br"],
+            artName: "",
+            author: "",
+            collection: "",
+            description: "",
+            contact: "",
             tagsName: [],
             file: image,
             tag:"",
@@ -28,8 +31,8 @@ class EditableDetailsArtPage extends React.Component{
         if(this.state.tag){
             var newTagsName = this.state.tagsName.concat(this.state.tag);
             this.setState({
-                tagsName: newTagsName,
-                empty: false
+                ['tagsName']: newTagsName,
+                ['empty']: false
             })
         }
     }
@@ -49,7 +52,7 @@ class EditableDetailsArtPage extends React.Component{
     }
 
     handleChange(event, data){
-
+        
         if (data != "file"){
             this.setState({[data]: event.target.value})
         }
@@ -58,12 +61,14 @@ class EditableDetailsArtPage extends React.Component{
             var file = undefined;
             if(event.target.files[0]) file = URL.createObjectURL(event.target.files[0])
             else file = this.state.file;
-            
+                
             this.setState({
-               [data]:file
+                [data]:file
             })
         }
+        console.log(this.state);
     }
+    
 /*
     componentDidMount() {
         fetch('http://localhost:8080/user/miuda06/profile/myArts/adventureTime')
@@ -96,7 +101,12 @@ class EditableDetailsArtPage extends React.Component{
                             <input className="browser-button" type="file" onChange={ (event) => this.handleChange(event, "file")}></input> 
                         </div>
                         <section className="info">
-                            <EditableInfoArt empty={this.state.empty} info={this.state.information} tagsName={this.state.tagsName} addTag={this.addTag} handleChange={this.handleChange} deleteTag={this.deleteTag}></EditableInfoArt>
+                            <EditableInfoArt empty={this.state.empty} 
+                            info={[this.state.artName, this.state.author, this.state.collection, this.state.description, this.state.contact]} 
+                            tagsName={this.state.tagsName} 
+                            addTag={this.addTag} 
+                            handleChange={this.handleChange} 
+                            deleteTag={this.deleteTag}></EditableInfoArt>
                             <button className="btn btn-outline-primary btn-lg btn-block saveButton">Save</button>
                         </section> 
                     </div>
