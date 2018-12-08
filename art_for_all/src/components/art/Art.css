@@ -1,0 +1,9 @@
+.art-img-size{
+    height: 24em;
+    width: 15.5em;
+    margin: 1.2em 1.5em;
+    border-radius: 1.2em;
+}
+.art-img-size:hover{
+    border: solid 0.5em gainsboro ;
+}

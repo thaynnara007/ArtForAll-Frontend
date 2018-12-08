@@ -1,6 +1,6 @@
 import React from 'react';
 import InfoArt from '../info/InfoArt';
-import image from '../../adventure.jpg';
+import image from '../../img/adventure.jpg';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './DetailsArtPage.css';
 

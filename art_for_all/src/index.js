@@ -8,9 +8,10 @@ import Navbar from './components/navbar/Navbar'
 import * as serviceWorker from './serviceWorker';
 import SignUpPage from './components/signUpPage/SignUpPage';
 import Login from './components/login/login';
+import Art from './components/art/Art';
 
 
-ReactDOM.render(<Login/>, document.getElementById('root'));
+ReactDOM.render(<Art/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
