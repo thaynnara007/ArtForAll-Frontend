@@ -7,3 +7,7 @@
 .art-img-size:hover{
     border: solid 0.5em gainsboro ;
 }
+
+.cu{
+    background-color: none;
+}

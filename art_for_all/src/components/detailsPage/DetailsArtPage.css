@@ -1,6 +1,6 @@
 .img-size{
-    height: 46em;
-    width: 40em;
+    height: 40em;
+    width: 32em;
     margin: 1em;
     margin-top: 2em;
     border-radius: 10px; 
@@ -17,7 +17,7 @@
 }
 
 .max{
-    max-width: 75em; 
+    max-width: 65em; 
     margin-bottom: 2em;
     margin-top: 2em;
 }
@@ -30,4 +30,15 @@
 .style{
     background: whitesmoke;
     box-shadow: 1px 3px 4px steelblue;
+}
+
+.modal{
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: block
 }
