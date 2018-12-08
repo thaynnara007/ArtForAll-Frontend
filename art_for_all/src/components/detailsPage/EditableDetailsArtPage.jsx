@@ -1,7 +1,7 @@
 import React from 'react';
 import InfoArt from '../info/InfoArt';
 import EditableInfoArt from '../info/EditableInfoArt';
-import image from '../../img/image-not-found.png';
+import image from '../../img/empty.png';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './EditableDetailsArtPage.css';
 import './DetailsArtPage.css';
@@ -16,7 +16,7 @@ class EditableDetailsArtPage extends React.Component{
             description: "",
             contact: "",
             tagsName: [],
-            file: image,
+            file: this.props.image || image,
             tag:"",
             empty: true
         }
@@ -92,26 +92,31 @@ class EditableDetailsArtPage extends React.Component{
     }
 
     render(){
-        return(
-            <div className="container max style">
-                    <button className="close">x</button>
-                    <div className="flex">
-                        <div>
-                            <div>{this.renderImage()}</div> 
-                            <input className="browser-button" type="file" onChange={ (event) => this.handleChange(event, "file")}></input> 
+
+        if(this.props.open){
+            return(
+                <div className="modal">
+                    <div className="container max style">
+                            <button className="close" onClick={this.props.hideModal}>x</button>
+                            <div className="flex">
+                                <div>
+                                    <div>{this.renderImage()}</div> 
+                                    <input className="browser-button" type="file" onChange={ (event) => this.handleChange(event, "file")}></input> 
+                                </div>
+                                <section className="info">
+                                    <EditableInfoArt empty={this.state.empty} 
+                                    info={[this.state.artName, this.state.author, this.state.collection, this.state.description, this.state.contact]} 
+                                    tagsName={this.state.tagsName} 
+                                    addTag={this.addTag} 
+                                    handleChange={this.handleChange} 
+                                    deleteTag={this.deleteTag}></EditableInfoArt>
+                                    <button className="btn btn-outline-primary btn-lg btn-block saveButton">Save</button>
+                                </section> 
+                            </div>
                         </div>
-                        <section className="info">
-                            <EditableInfoArt empty={this.state.empty} 
-                            info={[this.state.artName, this.state.author, this.state.collection, this.state.description, this.state.contact]} 
-                            tagsName={this.state.tagsName} 
-                            addTag={this.addTag} 
-                            handleChange={this.handleChange} 
-                            deleteTag={this.deleteTag}></EditableInfoArt>
-                            <button className="btn btn-outline-primary btn-lg btn-block saveButton">Save</button>
-                        </section> 
-                    </div>
                 </div>
-        )
+            )
+        }else return null;
     }
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import image from '../../img/totoro.jpg';
-import DetailArtPage from '../detailsPage/DetailsArtPage';
+import DetailsArtPage from '../detailsPage/DetailsArtPage';
+import EditableDetailsArtPage from '../detailsPage/EditableDetailsArtPage';
 import './Art.css';
 
 class Art extends React.Component{
@@ -47,7 +48,7 @@ class Art extends React.Component{
                     {this.renderImage()}
                 </div>
                 <div>
-                    <DetailArtPage open={this.state.openDetails} hideModal={this.hideModal}></DetailArtPage>
+                    <DetailsArtPage open={this.state.openDetails} hideModal={this.hideModal} image={this.state.file}></DetailsArtPage>
                 </div>
             </div>
         )
