@@ -101,7 +101,10 @@ class EditableDetailsArtPage extends React.Component{
                             <div className="flex">
                                 <div>
                                     <div>{this.renderImage()}</div> 
-                                    <input className="browser-button" type="file" onChange={ (event) => this.handleChange(event, "file")}></input> 
+                                    <div className="editableDetailsArtPage-upload">
+                                        <button class="btn btn-outline-success editableDetailsArtPage-uploadButton">Upload a file</button>
+                                        <input type="file" name="myfile" onChange={ (event) => this.handleChange(event, "file")}/>
+                                    </div>
                                 </div>
                                 <section className="info">
                                     <EditableInfoArt empty={this.state.empty} 
