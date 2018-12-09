@@ -110,7 +110,7 @@ class EditableDetailsArtPage extends React.Component{
                                     addTag={this.addTag} 
                                     handleChange={this.handleChange} 
                                     deleteTag={this.deleteTag}></EditableInfoArt>
-                                    <button className="btn btn-outline-primary btn-lg btn-block saveButton">Save</button>
+                                    <button className="btn btn-outline-primary btn-lg btn-block saveButton" onClick={(file) => this.props.save(this.state.file)}>Save</button>
                                 </section> 
                             </div>
                         </div>

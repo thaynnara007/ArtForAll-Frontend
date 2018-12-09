@@ -1,17 +1,8 @@
 import React from 'react';
 import Art from '../art/Art';
+import EditableDetailsArtPage from '../detailsPage/EditableDetailsArtPage';
 import './ArtBox.css';
-import image1 from '../../img/adventure.jpg';
-import image2 from '../../img/hisoka.jpg';
-import image3 from '../../img/mononoke.jpg';
-import image4 from '../../img/oLabirintodoFalro.jpg';
-import image5 from '../../img/overTheGardenWall.jpg';
-import image6 from '../../img/seila.jpg';
-import image7 from '../../img/steinsGate.jpg';
-import image8 from '../../img/bokunohero.jpg';
-import image9 from '../../img/bravest.jpg';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-
 
 class ArtBox extends React.Component{
     constructor(props){
@@ -19,11 +10,15 @@ class ArtBox extends React.Component{
 
         this.state={
             open:true,
-            arts: [image1, image2, image3, image4, image5, image6, image7, image8, image9]
+            newArt:false,
+            arts: []
         }
         this.renderArts = this.renderArts.bind(this);
         this.hideArts = this.hideArts.bind(this);
         this.renderButton = this.renderButton.bind(this);
+        this.openNewArt = this.openNewArt.bind(this);
+        this.closeNewArt = this.closeNewArt.bind(this);
+        this.addNewArt = this.addNewArt.bind(this);
     }
 
     renderArts(){
@@ -51,10 +46,33 @@ class ArtBox extends React.Component{
         }
     }
 
+    openNewArt(){
+        this.setState({
+            newArt: true
+        })
+    }
+
+    closeNewArt(){
+        this.setState({
+            newArt:false
+        })
+    }
+
+    addNewArt(file){
+        var newArts = this.state.arts.concat(file);
+        this.setState({
+            arts: newArts
+        })
+
+        this.closeNewArt();
+    }
+
     render(){
         return(
             <div className='font'>
                 <div className="artBox-row">
+                    <button className="btn btn-light artBox-newButton" onClick={this.openNewArt}>New</button>
+                    <EditableDetailsArtPage open={this.state.newArt} hideModal={this.closeNewArt} save={this.addNewArt}></EditableDetailsArtPage>
                     {this.renderButton()}
                     <p className="artBox-font">My Arts</p>
                 </div>

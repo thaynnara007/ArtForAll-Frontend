@@ -19,10 +19,20 @@
 }
 
 .artBox-button{
-    float: right;
+    float: left;
     background-color: cornflowerblue;
     border: none;
     font-size: 2em;
     color: whitesmoke;
     height: 1.5em;
 }
+
+.artBox-newButton{
+    float: right;
+    margin: 0.24em 0.4em;
+    color: dodgerblue;
+}
+
+.artBox-newButton:hover{
+    background-color: azure;
+} 
