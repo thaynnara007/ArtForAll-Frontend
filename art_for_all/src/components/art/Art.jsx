@@ -10,7 +10,7 @@ class Art extends React.Component{
         super(props)
 
         this.state={
-            file: image,
+            file: this.props.image,
             id: undefined,
             artName: 'totoro',
             openDetails: false

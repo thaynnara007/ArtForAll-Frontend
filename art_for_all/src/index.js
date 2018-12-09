@@ -9,9 +9,10 @@ import * as serviceWorker from './serviceWorker';
 import SignUpPage from './components/signUpPage/SignUpPage';
 import Login from './components/login/login';
 import Art from './components/art/Art';
+import ArtBox from './components/artBox/ArtBox';
 
 
-ReactDOM.render(<Art/>, document.getElementById('root'));
+ReactDOM.render(<ArtBox/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
