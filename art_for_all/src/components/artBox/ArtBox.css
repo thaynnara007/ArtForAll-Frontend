@@ -13,7 +13,7 @@
 }
 
 .artBox-font{
-    font-size: 2em;
+    font-size: 1.9em;
     color: whitesmoke;
     margin: 0em 18em;
 }
@@ -24,15 +24,16 @@
     border: none;
     font-size: 2em;
     color: whitesmoke;
-    height: 1.5em;
+    height: 1.4em;
 }
 
 .artBox-newButton{
     float: right;
-    margin: 0.24em 0.4em;
+    margin: 0.23em 0.4em;
     color: dodgerblue;
 }
 
 .artBox-newButton:hover{
     background-color: azure;
+    color: gray
 } 

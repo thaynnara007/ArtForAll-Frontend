@@ -59,12 +59,15 @@ class ArtBox extends React.Component{
     }
 
     addNewArt(file){
-        var newArts = this.state.arts.concat(file);
-        this.setState({
-            arts: newArts
-        })
 
-        this.closeNewArt();
+        if(file){
+            var newArts = this.state.arts.concat(file);
+            this.setState({
+                arts: newArts
+            })
+
+            this.closeNewArt();
+        }
     }
 
     render(){

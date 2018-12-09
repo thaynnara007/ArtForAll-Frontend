@@ -1,0 +1,29 @@
+.perfilPicture-size{
+    width: 12em;
+    height: 12em;
+}
+
+.perfilPicture-container{
+    border: solid 2px whitesmoke;
+    margin: 1em;
+    width: 12em;
+    height: 12em;
+}
+
+.profilePicture-upload{
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.profilePicture-upload input[type=file]{
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.perfilPicture-container:hover{
+    box-shadow: 1px 3px 4px #333;
+}
