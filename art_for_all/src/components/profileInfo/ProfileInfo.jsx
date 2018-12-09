@@ -2,21 +2,31 @@ import React from 'react';
 import ProfilePicture from '../profilePicture/ProfilePicture';
 import './ProfileInfo.css';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import image1 from '../../img/jake.gif';
-import image2 from '../../img/hisoka.jpg'
 
 class ProfileInfo extends React.Component{
     constructor(props){
         super(props);
 
         this.state={
-            headFile: image1,
+            headFile: null,
             profileFile: null,
             userName: 'Th@y',
             numberArts: 21,
-            following:51,
+            following: 51,
             followers: 40,
         }
+        this.editHeadFile = this.editHeadFile.bind(this);
+    }
+
+    editHeadFile(event){
+        
+        var file = undefined;
+        if(event.target.files[0]) file = URL.createObjectURL(event.target.files[0])
+        else file = this.state.file;
+
+        this.setState({
+            headFile: file
+        })
     }
 
     render(){
@@ -26,7 +36,7 @@ class ProfileInfo extends React.Component{
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
-                }
+            }
         
         const style2 = {
             backgroundColor: 'lightsteelblue'
@@ -37,6 +47,10 @@ class ProfileInfo extends React.Component{
         return(
             <div className="font">
                 <div className='profileInfo-head-img' style={this.state.headFile ? style : style2}>
+                    <div className="float-rigth editableDetailsArtPage-upload">
+                        <button className="btn profileInfo-upload">Edit</button>
+                        <input type="file" name="myfile" onChange={this.editHeadFile}/>
+                    </div>
                     <button className="btn float-rigth profileInfo-aboutButton">About</button>
                     <button className="btn float-rigth profileInfo-followButton">Follow</button>
                     <div className="float-left profileInfo-profileFile">
@@ -44,7 +58,7 @@ class ProfileInfo extends React.Component{
                     </div>
                     <p className="profileInfo-username float-left">{this.state.userName}</p>
                 </div>
-                <p className="cu">{details}</p>
+                <p className="profileInfo-details">{details}</p>
             </div>
         )
     }

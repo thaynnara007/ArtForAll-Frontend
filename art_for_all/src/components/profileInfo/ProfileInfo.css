@@ -15,28 +15,28 @@
     margin-right: 1em;
     margin-top: 6em;
     color: whitesmoke;
-    background: darkred;
+    background: crimson;
     padding-left: 2em;
     padding-right: 2em;
 }
 
 .profileInfo-followButton:hover{
     color: whitesmoke;
-    background: crimson;
+    background: darkred;
 }
 
 .profileInfo-aboutButton{
     margin-right: 1em;
     margin-top: 6em;
-    color: gray;
-    background: whitesmoke;
+    color: whitesmoke;
+    background: yellowgreen;
     padding-left: 2em;
     padding-right: 2em;
 }
 
 .profileInfo-aboutButton:hover{
-    color: darkslategrey;
-    background: rgb(224, 220, 220);
+    color: whitesmoke;
+    background: olivedrab;
 }
 
 .profileInfo-profileFile{
@@ -51,8 +51,18 @@
     margin-inline-start: 1.5em;
 }
 
-.cu{
+.profileInfo-details{
     font-size: 1em;
     color: gray;
    
+}
+
+.profileInfo-upload{
+    margin-right: 1em;
+    margin-top: 6em;
+    color: darkblue;
+    background: none;
+    border: solid 1px darkblue;
+    padding-left: 2em;
+    padding-right: 2em;
 }
