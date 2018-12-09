@@ -11,7 +11,8 @@ class ArtBox extends React.Component{
         this.state={
             open:true,
             newArt:false,
-            arts: []
+            arts: [],
+            numberArts: 0
         }
         this.renderArts = this.renderArts.bind(this);
         this.hideArts = this.hideArts.bind(this);
@@ -63,7 +64,8 @@ class ArtBox extends React.Component{
         if(file){
             var newArts = this.state.arts.concat(file);
             this.setState({
-                arts: newArts
+                arts: newArts,
+                numberArts: this.state.numberArts + 1
             })
 
             this.closeNewArt();
@@ -71,13 +73,15 @@ class ArtBox extends React.Component{
     }
 
     render(){
+
+        let head = "My Arts (" +(this.state.numberArts)+ ")"
         return(
             <div className='font'>
                 <div className="artBox-row">
                     <button className="btn btn-light artBox-newButton" onClick={this.openNewArt}>New</button>
                     <EditableDetailsArtPage open={this.state.newArt} hideModal={this.closeNewArt} save={this.addNewArt}></EditableDetailsArtPage>
                     {this.renderButton()}
-                    <p className="artBox-font">My Arts</p>
+                    <p className="artBox-font">{head}</p>
                 </div>
                 <div className="artBox-container flex">
                     {this.renderArts()}

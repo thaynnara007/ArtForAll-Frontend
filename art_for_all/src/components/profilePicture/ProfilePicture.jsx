@@ -26,10 +26,11 @@ class ProfilePicture extends React.Component{
 
     render(){
         return(
-            <div className="rounded-circle perfilPicture-container profilePicture-upload">
-                <img className="perfilPicture-size" src={this.state.file} alt="eu"></img>
-                <input type="file" name="myfile" onChange={this.changePicture}/>
-            </div>
+                <div className="rounded-circle perfilPicture-container profilePicture-upload">
+                    <img className="perfilPicture-size" src={this.state.file} alt="eu"></img>
+                    <input type="file" name="myfile" onChange={this.changePicture}/>
+                </div>
+        
         )   
     }
 }

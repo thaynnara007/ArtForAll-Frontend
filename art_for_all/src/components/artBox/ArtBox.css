@@ -15,7 +15,8 @@
 .artBox-font{
     font-size: 1.9em;
     color: whitesmoke;
-    margin: 0em 18em;
+    margin-inline-start: 17em;
+    margin-bottom: 0;
 }
 
 .artBox-button{
