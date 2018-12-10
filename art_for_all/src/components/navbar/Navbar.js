@@ -19,8 +19,7 @@ class Navbar extends React.Component{
                     <li className="left"><a className="item decoration" href="#">Logout</a></li>
                 </ul>
             )
-        }
-        else{
+        }else{
             return(
                 <ul className="list">
                     <li className="left"><a className="item decoration" href="#">Login</a></li>
@@ -42,7 +41,7 @@ class Navbar extends React.Component{
                     {this.renderItens()}
                 </div>
             </nav>
-        );
+        )
     }
 }
 

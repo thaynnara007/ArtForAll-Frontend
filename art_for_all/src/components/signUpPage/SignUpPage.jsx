@@ -24,7 +24,6 @@ class SignUpPage extends React.Component{
 
     render(){
         return (
-
             <div>
                 <Navbar></Navbar>
                 <div className="font container singUpForm-size singUpForm-color">
@@ -45,8 +44,8 @@ class SignUpPage extends React.Component{
                         <button type="button" className="btn btn-outline-success btn-lg btn-block spaace">Sign Up</button>
                         <br></br>
                     </div>  
+                </div>
             </div>
-        </div>
         )
     }
 

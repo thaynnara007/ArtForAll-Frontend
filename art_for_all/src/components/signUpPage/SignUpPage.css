@@ -19,7 +19,9 @@
 .singUpForm-font{
     font-size: 2em;
     color: whitesmoke;
-    margin: 0.5em 5.6em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-inline-start: 6em;
 }
 
 .singUpForm-label{

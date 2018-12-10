@@ -15,7 +15,7 @@ import ProfileInfo from './components/profileInfo/ProfileInfo';
 import Profile from './components/profile/Profile';
 
 
-ReactDOM.render(<Profile/>, document.getElementById('root'));
+ReactDOM.render(<SignUpPage/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

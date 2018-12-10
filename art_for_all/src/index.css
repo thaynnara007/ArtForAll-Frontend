@@ -8,10 +8,10 @@ body, html {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
- /* background: url('../src/img/background1.png') no-repeat center fixed; 
+  background: url('../src/img/background1.png') no-repeat center fixed; 
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; */
+  background-size: cover; 
 }
 
 body{
