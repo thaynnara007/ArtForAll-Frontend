@@ -62,6 +62,7 @@ class ArtBox extends React.Component{
     addNewArt(file){
 
         if(file){
+
             var newArts = this.state.arts.concat(file);
             this.setState({
                 arts: newArts,

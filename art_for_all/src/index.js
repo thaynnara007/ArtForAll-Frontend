@@ -12,9 +12,10 @@ import Art from './components/art/Art';
 import ArtBox from './components/artBox/ArtBox';
 import ProfilePicture from './components/profilePicture/ProfilePicture';
 import ProfileInfo from './components/profileInfo/ProfileInfo';
+import Profile from './components/profile/Profile';
 
 
-ReactDOM.render(<ProfileInfo/>, document.getElementById('root'));
+ReactDOM.render(<Profile/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
