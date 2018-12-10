@@ -1,6 +1,7 @@
 import React from 'react';
 import Art from '../art/Art';
 import EditableDetailsArtPage from '../detailsPage/EditableDetailsArtPage';
+import NameFild from '../forms/nameFild/NameFild';
 import './ArtBox.css';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
@@ -47,7 +48,7 @@ class ArtBox extends React.Component{
         return(
             <div className='font'>
                 <div className="artBox-row">
-                    <button className="btn btn-light artBox-newButton" onClick={this.props.open}>New</button>
+                    <button className="btn btn-info button artBox-newButton" onClick={this.props.open}>New</button>
                     <EditableDetailsArtPage open={this.props.newArt} hideModal={this.props.close} save={this.props.addNewArt}></EditableDetailsArtPage>
                     {this.renderButton()}
                     <p className="artBox-font">{head}</p>

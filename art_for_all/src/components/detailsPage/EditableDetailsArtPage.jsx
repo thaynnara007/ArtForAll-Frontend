@@ -102,7 +102,7 @@ class EditableDetailsArtPage extends React.Component{
                                 <div>
                                     <div>{this.renderImage()}</div> 
                                     <div className="editableDetailsArtPage-upload">
-                                        <button class="btn btn-outline-success editableDetailsArtPage-uploadButton">Upload a file</button>
+                                        <button className="btn btn-outline-success editableDetailsArtPage-uploadButton">Upload a file</button>
                                         <input type="file" name="myfile" onChange={ (event) => this.handleChange(event, "file")}/>
                                     </div>
                                 </div>

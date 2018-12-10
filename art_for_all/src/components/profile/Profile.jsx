@@ -30,7 +30,8 @@ class Profile extends React.Component{
         
         var file = undefined;
         if(event.target.files[0]) file = URL.createObjectURL(event.target.files[0])
-        else file = this.state.file;
+        else if(data === "profileFile") file = this.state.profileFile;
+        else if(data === "headFile") file = this.state.headFile;
 
         this.setState({
             [data]: file
