@@ -18,6 +18,7 @@ class Profile extends React.Component{
             following: 51,
             followers: 40,
             openNewArt: false,
+            logado: true
         }
         this.editFile = this.editFile.bind(this);
         this.addNewArt = this.addNewArt.bind(this);
@@ -67,7 +68,7 @@ class Profile extends React.Component{
         return(
             <div className="profile-background">
                 <div>
-                    <Navbar></Navbar>
+                    <Navbar logado={this.state.logado} userName={this.state.userName}></Navbar>
                 </div>
                 <div>
                     <ProfileInfo 
