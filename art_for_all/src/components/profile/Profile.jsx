@@ -12,12 +12,17 @@ class Profile extends React.Component{
         this.state={
             headFile: null,
             profileFile: image,
+            arts: [],
             userName: 'Th@y',
-            numberArts: 21,
+            numberArts: 0,
             following: 51,
             followers: 40,
+            openNewArt: false,
         }
         this.editFile = this.editFile.bind(this);
+        this.addNewArt = this.addNewArt.bind(this);
+        this.openNewArt = this.openNewArt.bind(this);
+        this.closeNewArt = this.closeNewArt.bind(this);
 
     }
 
@@ -32,6 +37,30 @@ class Profile extends React.Component{
         })
     }
 
+    addNewArt(file){
+
+        if(file){
+            var newArts = this.state.arts.concat(file);
+            this.setState({
+                arts: newArts,
+                numberArts: this.state.numberArts + 1
+            })
+        }
+        this.closeNewArt()
+    }
+
+    openNewArt(){
+        this.setState({
+            openNewArt: true
+        })
+    }
+
+    closeNewArt(){
+        this.setState({
+            openNewArt:false
+        })
+    }
+
     render(){
 
         return(
@@ -40,13 +69,22 @@ class Profile extends React.Component{
                     <Navbar></Navbar>
                 </div>
                 <div>
-                    <ProfileInfo editFile={this.editFile} 
+                    <ProfileInfo 
+                    editFile={this.editFile} 
                     headFile={this.state.headFile} 
                     profileFile={this.state.profileFile}
-                    info={[this.state.userName, this.state.numberArts, this.state.following, this.state.followers]}></ProfileInfo>
+                    info={[this.state.userName, this.state.numberArts, this.state.following, this.state.followers]}>
+                    </ProfileInfo>
                 </div>
                 <div className="profile-arts">
-                    <Artbox></Artbox>
+                    <Artbox
+                        arts={this.state.arts}
+                        numberArts={this.state.numberArts}
+                        addNewArt={this.addNewArt}
+                        newArt={this.state.openNewArt}
+                        open={this.openNewArt}
+                        close={this.closeNewArt}
+                    ></Artbox>
                 </div>
             </div>
         )

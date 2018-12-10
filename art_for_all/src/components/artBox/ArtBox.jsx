@@ -10,22 +10,16 @@ class ArtBox extends React.Component{
 
         this.state={
             open:true,
-            newArt:false,
-            arts: [],
-            numberArts: 0
         }
         this.renderArts = this.renderArts.bind(this);
         this.hideArts = this.hideArts.bind(this);
         this.renderButton = this.renderButton.bind(this);
-        this.openNewArt = this.openNewArt.bind(this);
-        this.closeNewArt = this.closeNewArt.bind(this);
-        this.addNewArt = this.addNewArt.bind(this);
     }
 
     renderArts(){
 
         if(this.state.open){
-            var arts = this.state.arts.map((art, num) =>{
+            var arts = this.props.arts.map((art, num) =>{
                 return (<Art key={num} image={art}></Art>)
             })
             return arts;
@@ -47,40 +41,14 @@ class ArtBox extends React.Component{
         }
     }
 
-    openNewArt(){
-        this.setState({
-            newArt: true
-        })
-    }
-
-    closeNewArt(){
-        this.setState({
-            newArt:false
-        })
-    }
-
-    addNewArt(file){
-
-        if(file){
-
-            var newArts = this.state.arts.concat(file);
-            this.setState({
-                arts: newArts,
-                numberArts: this.state.numberArts + 1
-            })
-
-            this.closeNewArt();
-        }
-    }
-
     render(){
 
-        let head = "My Arts (" +(this.state.numberArts)+ ")"
+        let head = "My Arts (" +(this.props.numberArts)+ ")"
         return(
             <div className='font'>
                 <div className="artBox-row">
-                    <button className="btn btn-light artBox-newButton" onClick={this.openNewArt}>New</button>
-                    <EditableDetailsArtPage open={this.state.newArt} hideModal={this.closeNewArt} save={this.addNewArt}></EditableDetailsArtPage>
+                    <button className="btn btn-light artBox-newButton" onClick={this.props.open}>New</button>
+                    <EditableDetailsArtPage open={this.props.newArt} hideModal={this.props.close} save={this.props.addNewArt}></EditableDetailsArtPage>
                     {this.renderButton()}
                     <p className="artBox-font">{head}</p>
                 </div>
