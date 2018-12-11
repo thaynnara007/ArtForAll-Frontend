@@ -1,5 +1,6 @@
 import React from "react";
 import NameFild from '../forms/nameFild/NameFild';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 class Navbar extends React.Component{
@@ -14,7 +15,7 @@ class Navbar extends React.Component{
         if(this.props.logado){
             return(
                 <ul className="list">
-                    <li className="left"><a className="item decoration" href="#">{this.props.userName}</a></li>
+                    <li className="left"><Link to="/user/:userName/profile" className="item decoration">{this.props.userName}</Link></li>
                     <li className="left"><a className="item decoration" href="#">For you</a></li>
                     <li className="left"><a className="item decoration" href="#">Logout</a></li>
                 </ul>
@@ -22,9 +23,9 @@ class Navbar extends React.Component{
         }else{
             return(
                 <ul className="list">
-                    <li className="left"><a className="item decoration" href="#">Login</a></li>
-                    <li className="left"><a className="item decoration" href="#">SignUp</a></li>
-                    <li className="left"><a className="item decoration" href="#">About</a></li>
+                    <li className="left"><Link to="/login" className="item decoration">Login</Link></li>
+                    <li className="left"><Link to="/signUp" className="item decoration">SignUp</Link></li>
+                    <li className="left"><Link to="/about" className="item decoration">About</Link></li>
                 </ul>
             )
         }
@@ -34,7 +35,7 @@ class Navbar extends React.Component{
         return(
             <nav className="font">
                 <div className="box">
-                    <a className="decoration active logo left" href="#">Bazart</a>
+                    <Link to="/" className="decoration active logo left">Bazart</Link>
                     <div className="rigth">
                         <NameFild buttonName='Search' placeHolder="Search" open={true}></NameFild>
                     </div>

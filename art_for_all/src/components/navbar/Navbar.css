@@ -37,7 +37,7 @@
     color: whitesmoke;
 }
 
-a:hover{
+.decoration:hover{
     background-color: #111;
     text-decoration: none;
     color: dodgerblue;
