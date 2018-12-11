@@ -24,7 +24,6 @@ class Profile extends React.Component{
         this.addNewArt = this.addNewArt.bind(this);
         this.openNewArt = this.openNewArt.bind(this);
         this.closeNewArt = this.closeNewArt.bind(this);
-
     }
 
     editFile(event, data){
