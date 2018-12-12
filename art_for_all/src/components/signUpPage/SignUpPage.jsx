@@ -42,7 +42,7 @@ class SignUpPage extends React.Component{
         if(!this.empty(firstName) && !this.empty(lastName) && !this.empty(userName)
             && !this.empty(email) && !this.empty(password)){
         
-            axios.post('http://localhost:8080/user', {firstName, lastName, userName, email, password})
+            axios.post('http://localhost:8080/userr', {firstName, lastName, userName, email, password})
             .then((response) => {
                 ToastStore.success(response.data);
             }) .catch((error) => {

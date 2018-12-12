@@ -16,6 +16,7 @@ class Login extends React.Component{
         this.handleChange = this.handleChange.bind(this);
         this.login = this.login.bind(this);
         this.empty = this.empty.bind(this);
+        this.saveToken = this.saveToken.bind(this);
     }
 
     handleChange(event, data){
@@ -24,6 +25,12 @@ class Login extends React.Component{
 
     empty(word){
         return word.length === 0;
+    }
+
+    saveToken(response){
+        var res = response.data;
+        localStorage.setItem('userName', res.userName);
+        localStorage.setItem("token", res.token);
     }
 
     login(event){
@@ -36,11 +43,11 @@ class Login extends React.Component{
 
             axios.post('http://localhost:8080/login', {userName, password})
             .then((response) =>{
-                console.log(response);
+                this.saveToken(response);
             })
             .catch((error) =>{
                 console.log(error);
-                ToastStore.error("Invalid user");
+                ToastStore.error("Email or password invalid");
             })
 
         }else ToastStore.warning("There are filds still empty!");
