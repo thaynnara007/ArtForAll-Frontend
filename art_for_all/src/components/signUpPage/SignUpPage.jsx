@@ -49,7 +49,7 @@ class SignUpPage extends React.Component{
                 console.log(error); 
                 ToastStore.error(error.message);
             });
-        }else ToastStore.warning("There are filds that are still empty!");
+        }else ToastStore.warning("There are filds still empty!");
     }
 
     render(){
