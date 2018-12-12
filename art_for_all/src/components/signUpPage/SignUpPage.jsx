@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {ToastContainer, ToastStore} from 'react-toasts';
 import './SignUpPage.css';
 import Input from '../forms/input/InputFild';
 import Navbar from '../navbar/Navbar';
@@ -43,12 +44,12 @@ class SignUpPage extends React.Component{
         
             axios.post('http://localhost:8080/user', {firstName, lastName, userName, email, password})
             .then((response) => {
-                console.log(response);
-                console.log(response.data);
+                ToastStore.success(response.data);
             }) .catch((error) => {
                 console.log(error); 
+                ToastStore.error(error.message);
             });
-        }else alert("there are some filds that are still empty!")
+        }else ToastStore.warning("There are filds that are still empty!");
     }
 
     render(){
@@ -71,6 +72,7 @@ class SignUpPage extends React.Component{
                         <label className="singUpForm-label">Password:</label>
                         <Input handleChange={this.handleChange} data="password"></Input>
                         <button type="button" className="btn btn-outline-success btn-lg btn-block spaace" onClick={this.register}>Sign Up</button>
+                        <ToastContainer store={ToastStore}></ToastContainer>
                         <br></br>
                     </div>  
                 </div>
