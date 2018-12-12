@@ -1,7 +1,8 @@
-import React from 'react'
-import './SignUpPage.css'
-import Input from '../forms/input/InputFild'
-import Navbar from '../navbar/Navbar'
+import React from 'react';
+import axios from 'axios';
+import './SignUpPage.css';
+import Input from '../forms/input/InputFild';
+import Navbar from '../navbar/Navbar';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 class SignUpPage extends React.Component{
@@ -16,10 +17,38 @@ class SignUpPage extends React.Component{
             password:"",
         }
         this.handleChange = this.handleChange.bind(this);
+        this.register = this.register.bind(this);
+        this.empty = this.empty.bind(this);
+    }
+
+    empty(word){
+        return word.length === 0;
     }
 
     handleChange(event, data){
         this.setState({[data]: event.target.value})
+    }
+
+    register(event){
+        event.preventDefault();
+
+        var firstName = this.state.firstName;
+        var lastName = this.state.lastName;
+        var userName = this.state.userName;
+        var email = this.state.email;
+        var password = this.state.password;
+
+        if(!this.empty(firstName) && !this.empty(lastName) && !this.empty(userName)
+            && !this.empty(email) && !this.empty(password)){
+        
+            axios.post('http://localhost:8080/user', {firstName, lastName, userName, email, password})
+            .then((response) => {
+                console.log(response);
+                console.log(response.data);
+            }) .catch((error) => {
+                console.log(error); 
+            });
+        }else alert("there are some filds that are still empty!")
     }
 
     render(){
@@ -41,7 +70,7 @@ class SignUpPage extends React.Component{
                         <Input handleChange={this.handleChange} data="email"></Input>
                         <label className="singUpForm-label">Password:</label>
                         <Input handleChange={this.handleChange} data="password"></Input>
-                        <button type="button" className="btn btn-outline-success btn-lg btn-block spaace">Sign Up</button>
+                        <button type="button" className="btn btn-outline-success btn-lg btn-block spaace" onClick={this.register}>Sign Up</button>
                         <br></br>
                     </div>  
                 </div>
