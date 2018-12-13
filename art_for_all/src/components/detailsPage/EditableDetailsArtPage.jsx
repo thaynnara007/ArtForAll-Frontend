@@ -1,6 +1,8 @@
 import React from 'react';
 import InfoArt from '../info/InfoArt';
 import EditableInfoArt from '../info/EditableInfoArt';
+import Api from '../Api';
+import {ToastContainer, ToastStore} from 'react-toasts';
 import image from '../../img/empty.png';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './EditableDetailsArtPage.css';
@@ -24,6 +26,8 @@ class EditableDetailsArtPage extends React.Component{
         this.handleChange = this.handleChange.bind(this);
         this.renderImage = this.renderImage.bind(this);
         this.deleteTag = this.deleteTag.bind(this);
+        this.saveArt = this.saveArt.bind(this);
+        this.empty = this.empty.bind(this);
     }
 
     addTag(){
@@ -66,26 +70,43 @@ class EditableDetailsArtPage extends React.Component{
                 [data]:file
             })
         }
-        console.log(this.state);
+    }
+
+    empty(word){
+        return word.length === 0;
     }
     
-/*
-    componentDidMount() {
-        fetch('http://localhost:8080/user/miuda06/profile/myArts/adventureTime')
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                var tags =  data[0].tags;
-                var info = [data[0].name]
-                
-                this.setState({ 
-                    information: info,
-                    tagsName: tags,
-                    })});
-    }
-*/
-    renderImage(){
+    saveArt(event){
+        event.preventDefault();
+
+        var artName = this.state.artName;
+        var author = this.state.author;
+        var collection = this.state.collection;
+        var description = this.state.description;
+        var contact = this.state.contact;
+        var tags = this.state.tagsName;
         
+        if(!this.empty(artName) && !this.empty(author) && !this.empty(collection) &&
+        !this.empty(description) && !this.empty(contact) && !this.empty(tags)){
+
+            Api.post("user/me/profile/myArts", {
+                artName, author, collection, description, contact, tags},{
+                    headers:{
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer " + localStorage.getItem('token')
+                    }
+                }).then((response) =>{
+                    ToastStore.success("Art added successfully")
+                }).catch((error) =>{
+                    console.log(error);
+                    ToastStore.error(error.message);
+                })
+        }
+        else ToastStore.warning("There are filds still empty!");
+    }
+
+    renderImage(){
+        //onClick={(file) => this.props.save(this.state.file)}
         if (this.state.file)
             return (<img className="img-size" src={this.state.file} alt=""></img>)
         else return null
@@ -113,8 +134,9 @@ class EditableDetailsArtPage extends React.Component{
                                     addTag={this.addTag} 
                                     handleChange={this.handleChange} 
                                     deleteTag={this.deleteTag}></EditableInfoArt>
-                                    <button className="btn btn-outline-primary btn-lg btn-block saveButton" onClick={(file) => this.props.save(this.state.file)}>Save</button>
+                                    <button className="btn btn-outline-primary btn-lg btn-block saveButton" onClick={this.saveArt}>Save</button>
                                 </section> 
+                                <ToastContainer store={ToastStore}></ToastContainer>
                             </div>
                         </div>
                 </div>
