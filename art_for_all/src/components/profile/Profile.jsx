@@ -15,10 +15,10 @@ class Profile extends React.Component{
             headFile: null,
             profileFile: image,
             arts: [],
-            userName: 'Th@y',
+            userName: '',
             numberArts: 0,
-            following: 51,
-            followers: 40,
+            following: 0,
+            followers: 0,
             openNewArt: false,
             logado: true
         }
@@ -86,7 +86,7 @@ class Profile extends React.Component{
     }
 
     render(){
-
+    
         return(
             <div className="profile-background">
                 <div>
@@ -94,6 +94,7 @@ class Profile extends React.Component{
                 </div>
                 <div>
                     <ProfileInfo 
+                    profileOwner={this.props.match.params.userName}
                     editFile={this.editFile} 
                     headFile={this.state.headFile} 
                     profileFile={this.state.profileFile}

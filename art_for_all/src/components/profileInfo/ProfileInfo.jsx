@@ -1,10 +1,11 @@
 import React from 'react';
 import ProfilePicture from '../profilePicture/ProfilePicture';
+import { Link } from 'react-router-dom';
 import './ProfileInfo.css';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 class ProfileInfo extends React.Component{
-
+  
     render(){
 
         const USERNAME = 0;
@@ -32,7 +33,7 @@ class ProfileInfo extends React.Component{
                         <button className="btn profileInfo-upload">Edit</button>
                         <input type="file" name="myfile" onChange={(event, data) => this.props.editFile(event, 'headFile')}/>
                     </div>
-                    <button className="btn float-rigth profileInfo-aboutButton">About</button>
+                    <Link to={"/user/" + (this.props.profileOwner) +"/info"} className="btn float-rigth profileInfo-aboutButton">About</Link>
                     <button className="btn float-rigth profileInfo-followButton">Follow</button>
                     <div className="float-left profileInfo-profileFile">
                         <ProfilePicture editFile={this.props.editFile}>{this.props.profileFile}</ProfilePicture>

@@ -15,7 +15,7 @@ class Navbar extends React.Component{
         if(this.props.logado){
             return(
                 <ul className="list">
-                    <li className="left"><Link to="/user/:userName/profile" className="item decoration">{this.props.userName}</Link></li>
+                    <li className="left"><Link to="/user/me/profile" className="item decoration">{this.props.userName}</Link></li>
                     <li className="left"><a className="item decoration" href="#">For you</a></li>
                     <li className="left"><a className="item decoration" href="#">Logout</a></li>
                 </ul>

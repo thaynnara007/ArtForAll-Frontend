@@ -1,4 +1,6 @@
 import React from "react";
+import Api from '../Api';
+import {ToastContainer, ToastStore} from 'react-toasts';
 import ProfilePicture from '../profilePicture/ProfilePicture';
 import Navbar from '../navbar/Navbar';
 import Input from '../forms/input/InputFild';
@@ -11,16 +13,42 @@ class AboutProfile extends React.Component{
         super(props);
 
         this.state={
-            userName:"Th@y",
+            userName:"",
             profileFile: image,
-            firstName: "Thaynnara",
-            lastName: "Gonçalves",
-            email: "thaynnara.goncalves@ccc.ufcg.edu.br",
-            contact: 'whatsApp, telegram: 8393333-3333',
-            description: 'I am a brazilian artist in my free time :)'
+            firstName: "",
+            lastName: "",
+            email: "",
+            contact: '',
+            description: ''
         }
         this.editProfilePicture = this.editProfilePicture.bind(this);
         this.handleChange = this.handleChange.bind(this);
+    }
+
+    componentDidMount(){
+        var profileOwner = this.props.match.params.userName;
+        var path = "user/" + (profileOwner) + "/info";
+        Api.get(path, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem('token')
+            }
+        })
+        .then((response) =>{
+            
+            var data = response.data;
+            this.setState({
+                contact: data.contact,
+                description: data.description,
+                email: data.email,
+                firstName: data.firstName,
+                lastName: data.lastName,
+                userName: data.userName
+            })
+        }).catch((error) =>{
+            console.log(error);
+            ToastStore.error(error.message);
+        })
     }
 
     editProfilePicture(event){
@@ -66,6 +94,7 @@ class AboutProfile extends React.Component{
                         <Text handleChange={this.handleChange} data="description" placeHolder={this.state.description}></Text>
                         <button type="button" className="btn btn-outline-success btn-lg btn-block spaace">Save changes</button>
                     </div>
+                    <ToastContainer store={ToastStore}></ToastContainer>
                     <br></br>
                 </div>
             </div>
