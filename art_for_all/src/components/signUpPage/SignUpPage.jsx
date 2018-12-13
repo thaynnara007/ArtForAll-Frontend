@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Api from '../Api';
 import {ToastContainer, ToastStore} from 'react-toasts';
 import './SignUpPage.css';
 import Input from '../forms/input/InputFild';
@@ -42,7 +43,7 @@ class SignUpPage extends React.Component{
         if(!this.empty(firstName) && !this.empty(lastName) && !this.empty(userName)
             && !this.empty(email) && !this.empty(password)){
         
-            axios.post('http://localhost:8080/userr', {firstName, lastName, userName, email, password})
+            Api.post('userr/', {firstName, lastName, userName, email, password})
             .then((response) => {
                 ToastStore.success(response.data);
             }) .catch((error) => {

@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import Redirect from 'react-router-dom';
+import Api from '../Api';
 import {ToastContainer, ToastStore} from 'react-toasts';
 import Input from '../forms/input/InputFild';
 import Navbar from '../navbar/Navbar';
@@ -41,13 +43,14 @@ class Login extends React.Component{
 
         if(!this.empty(userName) && !this.empty(password)){
 
-            axios.post('http://localhost:8080/login', {userName, password})
+            Api.post('login/', {userName, password})
             .then((response) =>{
                 this.saveToken(response);
+                this.props.history.push('user/me/profile');
             })
             .catch((error) =>{
                 console.log(error);
-                ToastStore.error("Email or password invalid");
+                ToastStore.error("User name or password invalid");
             })
 
         }else ToastStore.warning("There are filds still empty!");
