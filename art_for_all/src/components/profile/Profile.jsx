@@ -20,10 +20,10 @@ class Profile extends React.Component{
             following: 0,
             followers: 0,
             openNewArt: false,
-            logado: true
+            logado: true,
+            profileOwner: this.props.match.params.userName
         }
         this.editFile = this.editFile.bind(this);
-        this.addNewArt = this.addNewArt.bind(this);
         this.openNewArt = this.openNewArt.bind(this);
         this.closeNewArt = this.closeNewArt.bind(this);
     }
@@ -36,8 +36,13 @@ class Profile extends React.Component{
             }
         })
         .then( (response) =>{
+
+            var arts = response.data.userArts.map((art) =>{
+                return {artName: art.name}
+            })
+
             this.setState({
-                arts: response.data.userArts,
+                arts: arts,
                 userName: response.data.userName,
                 numberArts: response.data.userArts.length,
                 following: response.data.followingNumber,
@@ -61,18 +66,6 @@ class Profile extends React.Component{
         })
     }
 
-    addNewArt(file){
-
-        if(file){
-            var newArts = this.state.arts.concat(file);
-            this.setState({
-                arts: newArts,
-                numberArts: this.state.numberArts + 1
-            })
-        }
-        this.closeNewArt()
-    }
-
     openNewArt(){
         this.setState({
             openNewArt: true
@@ -94,7 +87,7 @@ class Profile extends React.Component{
                 </div>
                 <div>
                     <ProfileInfo 
-                    profileOwner={this.props.match.params.userName}
+                    profileOwner={this.state.profileOwner}
                     editFile={this.editFile} 
                     headFile={this.state.headFile} 
                     profileFile={this.state.profileFile}
@@ -103,9 +96,9 @@ class Profile extends React.Component{
                 </div>
                 <div className="profile-arts">
                     <Artbox
+                        profileOwner={this.state.profileOwner}
                         arts={this.state.arts}
                         numberArts={this.state.numberArts}
-                        addNewArt={this.addNewArt}
                         newArt={this.state.openNewArt}
                         open={this.openNewArt}
                         close={this.closeNewArt}

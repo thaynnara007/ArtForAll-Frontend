@@ -1,5 +1,7 @@
 import React from 'react';
 import InfoArt from '../info/InfoArt';
+import Api from '../Api';
+import {ToastContainer, ToastStore} from 'react-toasts';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './DetailsArtPage.css';
 
@@ -8,12 +10,41 @@ class DetailsArtPage extends React.Component{
         super(props);
 
         this.state = {
-
-            information:["Totoro", "th@y", "Studio Ghibli", " Its a art to express the end of the cartoon", "thaynnara.goncalves@ccc.ufcg.edu.br"],
-            tagsName: ['Totoro', "My neighborhood Totoro", "Studio Ghibli", "Hayao Miazaki", "Miazaki"],
+            artName:'',
+            author: '',
+            collection: '',
+            description: '',
+            contact: '',
+            tagsName: [],
             file: this.props.image
         }
     }
+
+    componentDidMount(){
+       
+        var path = "user/" + (this.props.profileOwner) + "/profile/myArts/" + (this.props.artName);
+        Api.get(path, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem('token')
+            }
+        }).then((response) =>{
+            var data = response.data[0];
+           
+            this.setState({
+                artName: data.name,
+                author: data.author,
+                collection: data.collectioon,
+                description: data.description,
+                contact: data.contact,
+                tagsName: data.tags
+            })
+    
+        }).catch((error) =>{
+            console.log(error);
+            ToastStore.error(error.message);
+        }) 
+     }
 
     render(){
 
@@ -23,12 +54,15 @@ class DetailsArtPage extends React.Component{
                     <div className="container max style">
                             <button className="close" onClick={this.props.hideModal}>x</button>
                             <div className="flex">
-                                <img className="img-size" src={this.state.file} alt="adventure ends"></img>
+                                <img className="img-size" src={this.state.file} alt={this.state.artName}></img>
                                 <section className="info">
-                                    <InfoArt info={this.state.information} tagsName={this.state.tagsName}></InfoArt>
+                                    <InfoArt 
+                                    info={[this.state.artName, this.state.author, this.state.collection, this.state.description, this.state.contact]} 
+                                    tagsName={this.state.tagsName}></InfoArt>
                                 </section>
                             </div>
                         </div>
+                        <ToastContainer store={ToastStore}></ToastContainer>
                 </div>
             )
         }

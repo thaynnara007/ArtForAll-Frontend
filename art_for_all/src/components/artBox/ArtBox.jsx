@@ -20,8 +20,10 @@ class ArtBox extends React.Component{
     renderArts(){
 
         if(this.state.open){
+           
             var arts = this.props.arts.map((art, num) =>{
-                return (<Art key={num} image={art}></Art>)
+                return (<Art key={num} image={null} 
+                    artName={art.artName} profileOwner={this.props.profileOwner}></Art>)
             })
             return arts;
         }else return null
@@ -49,7 +51,7 @@ class ArtBox extends React.Component{
             <div className='font'>
                 <div className="artBox-row">
                     <button className="btn btn-info button artBox-newButton" onClick={this.props.open}>New</button>
-                    <EditableDetailsArtPage open={this.props.newArt} hideModal={this.props.close} save={this.props.addNewArt}></EditableDetailsArtPage>
+                    <EditableDetailsArtPage open={this.props.newArt} hideModal={this.props.close}></EditableDetailsArtPage>
                     {this.renderButton()}
                     <p className="artBox-font">{head}</p>
                 </div>

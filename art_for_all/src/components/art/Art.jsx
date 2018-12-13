@@ -10,9 +10,6 @@ class Art extends React.Component{
         super(props)
 
         this.state={
-            file: this.props.image,
-            id: undefined,
-            artName: 'totoro',
             openDetails: false
         }
         this.renderImage = this.renderImage.bind(this);
@@ -21,11 +18,7 @@ class Art extends React.Component{
     }
 
     renderImage(){
-
-        if(this.state.file){
-            return (<img className="art-img-size" src={this.state.file} alt={this.state.artName} onClick={this.showModal}></img>)
-        }
-        else return null;
+        return (<img className="art-img-size" src={this.props.image} alt={this.props.artName} onClick={this.showModal}></img>)
     }
 
     showModal(){
@@ -48,7 +41,8 @@ class Art extends React.Component{
                     {this.renderImage()}
                 </div>
                 <div>
-                    <DetailsArtPage open={this.state.openDetails} hideModal={this.hideModal} image={this.state.file}></DetailsArtPage>
+                    <DetailsArtPage open={this.state.openDetails} hideModal={this.hideModal} 
+                    image={this.state.file} profileOwner={this.props.profileOwner} artName={this.props.artName}></DetailsArtPage>
                 </div>
             </div>
         )

@@ -22,11 +22,11 @@ class EditableDetailsArtPage extends React.Component{
             tag:"",
             empty: true
         }
-        this.addTag = this.addTag.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.renderImage = this.renderImage.bind(this);
         this.deleteTag = this.deleteTag.bind(this);
         this.saveArt = this.saveArt.bind(this);
+        this.addTag = this.addTag.bind(this);
         this.empty = this.empty.bind(this);
     }
 
@@ -97,6 +97,8 @@ class EditableDetailsArtPage extends React.Component{
                     }
                 }).then((response) =>{
                     ToastStore.success("Art added successfully")
+                    this.props.hideModal();
+                
                 }).catch((error) =>{
                     console.log(error);
                     ToastStore.error(error.message);
@@ -106,7 +108,7 @@ class EditableDetailsArtPage extends React.Component{
     }
 
     renderImage(){
-        //onClick={(file) => this.props.save(this.state.file)}
+        
         if (this.state.file)
             return (<img className="img-size" src={this.state.file} alt=""></img>)
         else return null
