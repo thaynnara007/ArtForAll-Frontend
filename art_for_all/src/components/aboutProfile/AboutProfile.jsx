@@ -97,6 +97,7 @@ class AboutProfile extends React.Component{
                     <ToastContainer store={ToastStore}></ToastContainer>
                     <br></br>
                 </div>
+                <br></br>
             </div>
         )
     }

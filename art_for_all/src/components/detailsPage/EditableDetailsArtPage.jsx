@@ -98,7 +98,8 @@ class EditableDetailsArtPage extends React.Component{
                 }).then((response) =>{
                     ToastStore.success("Art added successfully")
                     this.props.hideModal();
-                
+                    window.location.reload();
+        
                 }).catch((error) =>{
                     console.log(error);
                     ToastStore.error(error.message);
