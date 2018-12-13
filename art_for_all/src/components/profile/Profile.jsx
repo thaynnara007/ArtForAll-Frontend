@@ -1,7 +1,9 @@
 import React from 'react';
+import Api from '../Api';
 import Navbar from '../navbar/Navbar';
 import ProfileInfo from '../profileInfo/ProfileInfo';
 import Artbox from '../artBox/ArtBox';
+import {ToastContainer, ToastStore} from 'react-toasts';
 import './Profile.css';
 import image from '../../img/me3.png';
 
@@ -24,6 +26,27 @@ class Profile extends React.Component{
         this.addNewArt = this.addNewArt.bind(this);
         this.openNewArt = this.openNewArt.bind(this);
         this.closeNewArt = this.closeNewArt.bind(this);
+    }
+
+    componentDidMount(){
+        Api.get("user/me/profile", {
+            headers:{
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem('token')
+            }
+        })
+        .then( (response) =>{
+            this.setState({
+                arts: response.data.userArts,
+                userName: response.data.userName,
+                numberArts: response.data.userArts.length,
+                following: response.data.followingNumber,
+                followers: response.data.followersNumber
+            })
+        }).catch((error) =>{
+            console.log(error);
+            ToastStore.error(error.message);
+        })
     }
 
     editFile(event, data){
@@ -87,6 +110,7 @@ class Profile extends React.Component{
                         close={this.closeNewArt}
                     ></Artbox>
                 </div>
+                <ToastContainer store={ToastStore}></ToastContainer>
             </div>
         )
     }

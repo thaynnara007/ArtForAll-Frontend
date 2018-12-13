@@ -31,7 +31,7 @@ class Login extends React.Component{
 
     saveToken(response){
         var res = response.data;
-        localStorage.setItem('userName', res.userName);
+        localStorage.setItem('userId', res.userId);
         localStorage.setItem("token", res.token);
     }
 
