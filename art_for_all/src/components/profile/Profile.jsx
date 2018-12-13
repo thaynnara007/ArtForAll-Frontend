@@ -23,6 +23,7 @@ class Profile extends React.Component{
             logado: true,
             profileOwner: this.props.match.params.userName
         }
+        this.logout = this.logout.bind(this);
         this.editFile = this.editFile.bind(this);
         this.openNewArt = this.openNewArt.bind(this);
         this.closeNewArt = this.closeNewArt.bind(this);
@@ -54,6 +55,11 @@ class Profile extends React.Component{
         })
     }
 
+    logout(){
+        localStorage.clear();
+        this.props.history.push('/')
+    }
+
     editFile(event, data){
         
         var file = undefined;
@@ -83,7 +89,7 @@ class Profile extends React.Component{
         return(
             <div className="profile-background">
                 <div>
-                    <Navbar logado={this.state.logado} userName={this.state.userName}></Navbar>
+                    <Navbar logado={this.state.logado} userName={this.state.userName} logout={this.logout}></Navbar>
                 </div>
                 <div>
                     <ProfileInfo 
