@@ -1,5 +1,5 @@
 import React from 'react';
-import firebase, {storage} from 'firebase';
+import firebase from 'firebase';
 
 var config = {
     apiKey: "AIzaSyBhd0wO2Bvzd3ZgDEROLg4lHCbOy4l9Hjw",
@@ -11,6 +11,5 @@ var config = {
   };
 
 firebase.initializeApp(config);
-const storage = firebase.storage();
   
-module.exports = {firebase, storage};
+export default firebase;

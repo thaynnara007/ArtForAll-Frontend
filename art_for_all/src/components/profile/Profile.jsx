@@ -4,21 +4,8 @@ import Navbar from '../navbar/Navbar';
 import ProfileInfo from '../profileInfo/ProfileInfo';
 import Artbox from '../artBox/ArtBox';
 import {ToastContainer, ToastStore} from 'react-toasts';
-import firebase, {storage} from '../../firebase';
 import './Profile.css';
 import image from '../../img/me3.png';
-
-
-var config = {
-    apiKey: "AIzaSyBhd0wO2Bvzd3ZgDEROLg4lHCbOy4l9Hjw",
-    authDomain: "bazart-6b8a5.firebaseapp.com",
-    databaseURL: "https://bazart-6b8a5.firebaseio.com",
-    projectId: "bazart-6b8a5",
-    storageBucket: "bazart-6b8a5.appspot.com",
-    messagingSenderId: "873184868112"
-  };
-  firebase.initializeApp(config);
-
 
 class Profile extends React.Component{
     constructor(props){
@@ -27,7 +14,6 @@ class Profile extends React.Component{
         this.state={
             headFile: null,
             profileFile: image,
-            profileUrl: null,
             arts: [],
             userName: '',
             numberArts: 0,
@@ -73,28 +59,62 @@ class Profile extends React.Component{
         localStorage.clear();
         this.props.history.push('/')
     }
+/*
+    storePhoto(){
+        
+        var path = this.state.userName + "/profilePicture/" + this.state.profileFile;
+        var storage = firebase.storage.ref();
+        var uploadTask = storage.child(path).put(this.state.profileUrl);
 
+        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, function(snapshot){
+
+            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log('Upload is ' + progress + '% done');
+            switch (snapshot.state) {
+                case firebase.storage.TaskState.PAUSED: // or 'paused'
+                  console.log('Upload is paused');
+                  break;
+                case firebase.storage.TaskState.RUNNING: // or 'running'
+                  console.log('Upload is running');
+                  break;
+            }
+        },function(error) {
+
+            switch (error.code) {
+              case 'storage/unauthorized':
+                    ToastStore.error('storage/unauthorized');
+                break;
+          
+              case 'storage/canceled':
+                ToastStore.error('storage/canceled');
+                break;
+          
+              case 'storage/unknown':
+                ToastStore.error('storage/unknown');
+                break;
+            }
+          
+        }, function() {
+            // Upload completed successfully, now we can get the download URL
+            uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+              console.log('File available at', downloadURL);
+            });
+            ToastStore.success('Upload completed successfully');
+        }
+    )
+} 
+*/
     editFile(event, data){
         
         var file = undefined;
-        var url = undefined;
 
-        if(event.target.files[0]){
-            file = event.target.files[0]
-            url = URL.createObjectURL(event.target.files[0])
-        }
-        else if(data === "profileFile"){
-            file = this.state.profileFile;
-            url = this.state.profileUrl
-        }
+        if(event.target.files[0]) file = URL.createObjectURL(event.target.files[0])
+        else if(data === "profileFile") file = this.state.profileFile;
         else if(data === "headFile") file = this.state.headFile;
-
-        if(data === "profileFile"){
-            this.setState({
-                profileFile: file,
-                profileUrl : url
-            })
-        }
+    
+       this.setState({
+            [data]: file
+        })
     }
 
     openNewArt(){

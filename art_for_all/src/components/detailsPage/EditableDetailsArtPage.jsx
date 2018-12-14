@@ -1,5 +1,6 @@
 import React from 'react';
 import InfoArt from '../info/InfoArt';
+import firebase from '../../firebase';
 import EditableInfoArt from '../info/EditableInfoArt';
 import Api from '../Api';
 import {ToastContainer, ToastStore} from 'react-toasts';
@@ -19,6 +20,7 @@ class EditableDetailsArtPage extends React.Component{
             contact: "",
             tagsName: [],
             file: this.props.image || image,
+            typeFile: null,
             tag:"",
             empty: true
         }
@@ -29,6 +31,52 @@ class EditableDetailsArtPage extends React.Component{
         this.addTag = this.addTag.bind(this);
         this.empty = this.empty.bind(this);
     }
+
+
+    storePhoto(){
+
+        var metadata = {contentType: 'image/jpeg'};
+        var path = this.props.userName + "/profilePicture/" + this.state.artName;
+        var storage = firebase.storage.ref();
+        var uploadTask = storage.child(path).put(this.state.profileUrl);
+
+        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, function(snapshot){
+
+            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log('Upload is ' + progress + '% done');
+            switch (snapshot.state) {
+                case firebase.storage.TaskState.PAUSED: // or 'paused'
+                  console.log('Upload is paused');
+                  break;
+                case firebase.storage.TaskState.RUNNING: // or 'running'
+                  console.log('Upload is running');
+                  break;
+            }
+        },function(error) {
+
+            switch (error.code) {
+              case 'storage/unauthorized':
+                    ToastStore.error('storage/unauthorized');
+                break;
+          
+              case 'storage/canceled':
+                ToastStore.error('storage/canceled');
+                break;
+          
+              case 'storage/unknown':
+                ToastStore.error('storage/unknown');
+                break;
+            }
+          
+        }, function() {
+            // Upload completed successfully, now we can get the download URL
+            uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+              console.log('File available at', downloadURL);
+            });
+            ToastStore.success('Upload completed successfully');
+        }
+    )
+} 
 
     addTag(){
 
@@ -57,17 +105,21 @@ class EditableDetailsArtPage extends React.Component{
 
     handleChange(event, data){
         
-        if (data != "file"){
-            this.setState({[data]: event.target.value})
-        }
+        if (data != "file") this.setState({[data]: event.target.value})
         else{
-
             var file = undefined;
-            if(event.target.files[0]) file = URL.createObjectURL(event.target.files[0])
-            else file = this.state.file;
-                
+            var type = undefined;
+            if(event.target.files[0]){ 
+                file = URL.createObjectURL(event.target.files[0])
+                type = event.target.files[0].type;
+            }else{    
+                file = this.state.file;
+                type = this.state.type;
+            }
+            console.log(typeof(type));
             this.setState({
-                [data]:file
+                file : file,
+                typeFile : type + "",
             })
         }
     }
