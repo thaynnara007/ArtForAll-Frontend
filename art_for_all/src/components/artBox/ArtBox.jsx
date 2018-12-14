@@ -22,8 +22,8 @@ class ArtBox extends React.Component{
         if(this.state.open){
            
             var arts = this.props.arts.map((art, num) =>{
-                return (<Art key={num} image={null} 
-                    artName={art.artName} profileOwner={this.props.profileOwner}></Art>)
+                return (<Art key={num} artName={art.artName} 
+                    userName={this.props.userName} profileOwner={this.props.profileOwner}></Art>)
             })
             return arts;
         }else return null
@@ -47,7 +47,7 @@ class ArtBox extends React.Component{
     render(){
 
         let head = "My Arts (" +(this.props.numberArts)+ ")"
-        console.log(this.props.userName);
+        
         return(
             <div className='font'>
                 <div className="artBox-row">

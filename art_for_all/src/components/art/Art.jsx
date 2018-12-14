@@ -1,5 +1,5 @@
 import React from 'react';
-import image from '../../img/totoro.jpg';
+import firebase from '../../firebase';
 import DetailsArtPage from '../detailsPage/DetailsArtPage';
 import EditableDetailsArtPage from '../detailsPage/EditableDetailsArtPage';
 import './Art.css';
@@ -10,15 +10,21 @@ class Art extends React.Component{
         super(props)
 
         this.state={
-            openDetails: false
+            openDetails: false,
+            image: null,
         }
+        this.displayImage = this.displayImage.bind(this);
         this.renderImage = this.renderImage.bind(this);
         this.showModal = this.showModal.bind(this);
         this.hideModal = this.hideModal.bind(this);
     }
 
+    componentDidMount(){
+        this.displayImage();
+    }
+
     renderImage(){
-        return (<img className="art-img-size" src={this.props.image} alt={this.props.artName} onClick={this.showModal}></img>)
+        return (<img className="art-img-size" src={this.state.image} alt={this.props.artName} onClick={this.showModal}></img>)
     }
 
     showModal(){
@@ -33,8 +39,24 @@ class Art extends React.Component{
         })
     }
 
+    displayImage(){
+
+        var storage = firebase.storage().ref();
+        var path = "/" +this.props.userName + "/arts/" +this.props.artName;
+        var artRef = storage.child(path);
+
+        artRef.getDownloadURL().then((url) =>{
+
+            this.setState({
+                image : url
+            })
+           
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+
     render(){
-        
         return(
             <div>
                 <div>
@@ -42,7 +64,8 @@ class Art extends React.Component{
                 </div>
                 <div>
                     <DetailsArtPage open={this.state.openDetails} hideModal={this.hideModal} 
-                    image={this.state.file} profileOwner={this.props.profileOwner} artName={this.props.artName}></DetailsArtPage>
+                    profileOwner={this.props.profileOwner} artName={this.props.artName} 
+                    image={this.state.image}></DetailsArtPage>
                 </div>
             </div>
         )

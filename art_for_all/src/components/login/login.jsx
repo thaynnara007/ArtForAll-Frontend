@@ -31,8 +31,8 @@ class Login extends React.Component{
 
     saveToken(response){
         var res = response.data;
-        localStorage.setItem('userId', res.userId);
-        localStorage.setItem("token", res.token);
+        localStorage.setItem('bazartUserId', res.userId);
+        localStorage.setItem("bazartToken", res.token);
     }
 
     login(event){
@@ -68,7 +68,7 @@ class Login extends React.Component{
                         <label className="singUpForm-label">Username:</label>
                         <Input handleChange={this.handleChange} data="userName"></Input>
                         <label className="singUpForm-label">Password:</label>
-                        <Input handleChange={this.handleChange} data="password"></Input>
+                        <Input handleChange={this.handleChange} data="password" type="password"></Input>
                         <button type="button" className="btn btn-outline-success btn-lg btn-block spaace" onClick={this.login}>Sign In</button>
                         <ToastContainer store={ToastStore}></ToastContainer>
                         <br></br>

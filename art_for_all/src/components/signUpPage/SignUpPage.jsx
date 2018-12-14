@@ -71,7 +71,7 @@ class SignUpPage extends React.Component{
                         <label className="singUpForm-label">Email:</label>
                         <Input handleChange={this.handleChange} data="email"></Input>
                         <label className="singUpForm-label">Password:</label>
-                        <Input handleChange={this.handleChange} data="password"></Input>
+                        <Input handleChange={this.handleChange} data="password" type="password"></Input>
                         <button type="button" className="btn btn-outline-success btn-lg btn-block spaace" onClick={this.register}>Sign Up</button>
                         <ToastContainer store={ToastStore}></ToastContainer>
                         <br></br>

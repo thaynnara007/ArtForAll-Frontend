@@ -19,8 +19,9 @@ class EditableDetailsArtPage extends React.Component{
             description: "",
             contact: "",
             tagsName: [],
-            file: this.props.image || image,
+            file: null,
             typeFile: null,
+            url: null,
             tag:"",
             empty: true
         }
@@ -37,10 +38,9 @@ class EditableDetailsArtPage extends React.Component{
     storePhoto(){
 
         var metadata = {contentType: this.state.typeFile};
-        var path = this.props.userName + "/profilePicture/" + this.state.artName;
+        var path = this.props.userName + "/arts/" + this.state.artName 
         var storage = firebase.storage().ref();
-        var blob = new Blob([this.state.file], {type: this.state.typeFile})
-        var uploadTask = storage.child(path).put(blob, metadata);
+        var uploadTask = storage.child(path).put(this.state.file, metadata);
 
         uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, function(snapshot){
 
@@ -110,16 +110,20 @@ class EditableDetailsArtPage extends React.Component{
         else{
             var file = undefined;
             var type = undefined;
+            var url = undefined;
             if(event.target.files[0]){ 
-                file = URL.createObjectURL(event.target.files[0])
-                type = event.target.files[0].type;
+                type = event.target.files[0].type
+                file = event.target.files[0];
+                url = URL.createObjectURL(file);
             }else{    
                 file = this.state.file;
                 type = this.state.type;
+                url = this.state.url;
             }
             this.setState({
                 file : file,
-                typeFile : type + "",
+                typeFile : type,
+                url: url
             })
         }
     }
@@ -145,13 +149,12 @@ class EditableDetailsArtPage extends React.Component{
                 artName, author, collection, description, contact, tags},{
                     headers:{
                         "Content-Type": "application/json",
-                        "Authorization": "Bearer " + localStorage.getItem('token')
+                        "Authorization": "Bearer " + localStorage.getItem('bazartToken')
                     }
                 }).then((response) =>{
 
                     this.storePhoto();
                     ToastStore.success("Art added successfully")
-                //    this.props.hideModal();
                 //    window.location.reload();
         
                 }).catch((error) =>{
@@ -164,13 +167,11 @@ class EditableDetailsArtPage extends React.Component{
 
     renderImage(){
         
-        if (this.state.file)
-            return (<img className="img-size" src={this.state.file} alt=""></img>)
-        else return null
+        return (<img className="img-size" src={(this.state.url != null) ? this.state.url : image} alt=""></img>)
     }
 
     render(){
-        console.log(this.props.userName);
+        
         if(this.props.open){
             return(
                 <div className="modal">

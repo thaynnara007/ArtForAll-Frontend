@@ -33,7 +33,7 @@ class Profile extends React.Component{
         Api.get("user/me/profile", {
             headers:{
                 "Content-Type": "application/json",
-                "Authorization": "Bearer " + localStorage.getItem('token')
+                "Authorization": "Bearer " + localStorage.getItem('bazartToken')
             }
         })
         .then( (response) =>{

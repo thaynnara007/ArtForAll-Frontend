@@ -7,7 +7,7 @@ class App extends Component {
     super(props);
 
     this.state={
-      logado: (localStorage.userId) ? true : false
+      logado: (localStorage.bazartUserId) ? true : false
     }
   }
 
