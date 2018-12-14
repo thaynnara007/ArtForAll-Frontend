@@ -12,6 +12,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.logado)
     return (
       <div>
         <Navbar logado={this.state.logado} userName="Profile"></Navbar>
