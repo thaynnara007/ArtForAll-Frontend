@@ -24,7 +24,7 @@ class ProfileInfo extends React.Component{
             backgroundColor: 'lightsteelblue'
         }
 
-        var details = (this.props.info[NUMARTS])+ " arts | "+(this.props.info[FOLLOWING])+" fllowing | "+(this.props.info[FOLLOWERS])+" followers";
+        var details = (this.props.info[NUMARTS])+ " arts | "+(this.props.info[FOLLOWING])+" following | "+(this.props.info[FOLLOWERS])+" followers";
 
         return(
             <div className="font">

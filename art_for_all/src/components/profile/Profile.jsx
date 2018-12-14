@@ -4,8 +4,21 @@ import Navbar from '../navbar/Navbar';
 import ProfileInfo from '../profileInfo/ProfileInfo';
 import Artbox from '../artBox/ArtBox';
 import {ToastContainer, ToastStore} from 'react-toasts';
+import firebase, {storage} from '../../firebase';
 import './Profile.css';
 import image from '../../img/me3.png';
+
+
+var config = {
+    apiKey: "AIzaSyBhd0wO2Bvzd3ZgDEROLg4lHCbOy4l9Hjw",
+    authDomain: "bazart-6b8a5.firebaseapp.com",
+    databaseURL: "https://bazart-6b8a5.firebaseio.com",
+    projectId: "bazart-6b8a5",
+    storageBucket: "bazart-6b8a5.appspot.com",
+    messagingSenderId: "873184868112"
+  };
+  firebase.initializeApp(config);
+
 
 class Profile extends React.Component{
     constructor(props){
@@ -14,6 +27,7 @@ class Profile extends React.Component{
         this.state={
             headFile: null,
             profileFile: image,
+            profileUrl: null,
             arts: [],
             userName: '',
             numberArts: 0,
@@ -63,13 +77,24 @@ class Profile extends React.Component{
     editFile(event, data){
         
         var file = undefined;
-        if(event.target.files[0]) file = URL.createObjectURL(event.target.files[0])
-        else if(data === "profileFile") file = this.state.profileFile;
+        var url = undefined;
+
+        if(event.target.files[0]){
+            file = event.target.files[0]
+            url = URL.createObjectURL(event.target.files[0])
+        }
+        else if(data === "profileFile"){
+            file = this.state.profileFile;
+            url = this.state.profileUrl
+        }
         else if(data === "headFile") file = this.state.headFile;
 
-        this.setState({
-            [data]: file
-        })
+        if(data === "profileFile"){
+            this.setState({
+                profileFile: file,
+                profileUrl : url
+            })
+        }
     }
 
     openNewArt(){
