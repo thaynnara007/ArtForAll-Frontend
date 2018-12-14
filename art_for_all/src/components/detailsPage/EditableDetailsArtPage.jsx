@@ -68,8 +68,7 @@ class EditableDetailsArtPage extends React.Component{
               case 'storage/unknown':
                 ToastStore.error('storage/unknown');
                 break;
-            }
-          
+            } 
         }, function() {
             
             uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
