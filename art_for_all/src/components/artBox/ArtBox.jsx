@@ -47,11 +47,13 @@ class ArtBox extends React.Component{
     render(){
 
         let head = "My Arts (" +(this.props.numberArts)+ ")"
+        console.log(this.props.userName);
         return(
             <div className='font'>
                 <div className="artBox-row">
                     <button className="btn btn-info button artBox-newButton" onClick={this.props.open}>New</button>
-                    <EditableDetailsArtPage open={this.props.newArt} hideModal={this.props.close}></EditableDetailsArtPage>
+                    <EditableDetailsArtPage open={this.props.newArt} 
+                    hideModal={this.props.close} userName={this.props.userName}></EditableDetailsArtPage>
                     {this.renderButton()}
                     <p className="artBox-font">{head}</p>
                 </div>

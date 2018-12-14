@@ -26,6 +26,7 @@ class EditableDetailsArtPage extends React.Component{
         }
         this.handleChange = this.handleChange.bind(this);
         this.renderImage = this.renderImage.bind(this);
+        this.storePhoto = this.storePhoto.bind(this);
         this.deleteTag = this.deleteTag.bind(this);
         this.saveArt = this.saveArt.bind(this);
         this.addTag = this.addTag.bind(this);
@@ -35,20 +36,21 @@ class EditableDetailsArtPage extends React.Component{
 
     storePhoto(){
 
-        var metadata = {contentType: 'image/jpeg'};
+        var metadata = {contentType: this.state.typeFile};
         var path = this.props.userName + "/profilePicture/" + this.state.artName;
-        var storage = firebase.storage.ref();
-        var uploadTask = storage.child(path).put(this.state.profileUrl);
+        var storage = firebase.storage().ref();
+        var blob = new Blob([this.state.file], {type: this.state.typeFile})
+        var uploadTask = storage.child(path).put(blob, metadata);
 
         uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, function(snapshot){
 
             var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             console.log('Upload is ' + progress + '% done');
             switch (snapshot.state) {
-                case firebase.storage.TaskState.PAUSED: // or 'paused'
+                case firebase.storage.TaskState.PAUSED: 
                   console.log('Upload is paused');
                   break;
-                case firebase.storage.TaskState.RUNNING: // or 'running'
+                case firebase.storage.TaskState.RUNNING: 
                   console.log('Upload is running');
                   break;
             }
@@ -69,7 +71,7 @@ class EditableDetailsArtPage extends React.Component{
             }
           
         }, function() {
-            // Upload completed successfully, now we can get the download URL
+            
             uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
               console.log('File available at', downloadURL);
             });
@@ -116,7 +118,6 @@ class EditableDetailsArtPage extends React.Component{
                 file = this.state.file;
                 type = this.state.type;
             }
-            console.log(typeof(type));
             this.setState({
                 file : file,
                 typeFile : type + "",
@@ -148,9 +149,11 @@ class EditableDetailsArtPage extends React.Component{
                         "Authorization": "Bearer " + localStorage.getItem('token')
                     }
                 }).then((response) =>{
+
+                    this.storePhoto();
                     ToastStore.success("Art added successfully")
-                    this.props.hideModal();
-                    window.location.reload();
+                //    this.props.hideModal();
+                //    window.location.reload();
         
                 }).catch((error) =>{
                     console.log(error);
@@ -168,7 +171,7 @@ class EditableDetailsArtPage extends React.Component{
     }
 
     render(){
-
+        console.log(this.props.userName);
         if(this.props.open){
             return(
                 <div className="modal">

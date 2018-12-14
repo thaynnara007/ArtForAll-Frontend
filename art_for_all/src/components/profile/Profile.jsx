@@ -59,51 +59,7 @@ class Profile extends React.Component{
         localStorage.clear();
         this.props.history.push('/')
     }
-/*
-    storePhoto(){
-        
-        var path = this.state.userName + "/profilePicture/" + this.state.profileFile;
-        var storage = firebase.storage.ref();
-        var uploadTask = storage.child(path).put(this.state.profileUrl);
 
-        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, function(snapshot){
-
-            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log('Upload is ' + progress + '% done');
-            switch (snapshot.state) {
-                case firebase.storage.TaskState.PAUSED: // or 'paused'
-                  console.log('Upload is paused');
-                  break;
-                case firebase.storage.TaskState.RUNNING: // or 'running'
-                  console.log('Upload is running');
-                  break;
-            }
-        },function(error) {
-
-            switch (error.code) {
-              case 'storage/unauthorized':
-                    ToastStore.error('storage/unauthorized');
-                break;
-          
-              case 'storage/canceled':
-                ToastStore.error('storage/canceled');
-                break;
-          
-              case 'storage/unknown':
-                ToastStore.error('storage/unknown');
-                break;
-            }
-          
-        }, function() {
-            // Upload completed successfully, now we can get the download URL
-            uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-              console.log('File available at', downloadURL);
-            });
-            ToastStore.success('Upload completed successfully');
-        }
-    )
-} 
-*/
     editFile(event, data){
         
         var file = undefined;
@@ -153,6 +109,7 @@ class Profile extends React.Component{
                         newArt={this.state.openNewArt}
                         open={this.openNewArt}
                         close={this.closeNewArt}
+                        userName={this.state.userName}
                     ></Artbox>
                 </div>
                 <ToastContainer store={ToastStore}></ToastContainer>
