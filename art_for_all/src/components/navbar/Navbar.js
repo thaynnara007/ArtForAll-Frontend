@@ -22,7 +22,7 @@ class Navbar extends React.Component{
         if(this.props.logado){
             return(
                 <ul className="list">
-                    <li className="left"><Link to="/user/me/profile" className="item decoration">{this.props.userName}</Link></li>
+                    <li className="left"><Link to="/user/me/profile" className="item decoration">{this.props.userName || 'Login again'}</Link></li>
                     <li className="left"><a className="item decoration" href="#">For you</a></li>
                     <li className="left"><button className="item decoration item-background" onClick={this.logout}>Logout</button></li>
                 </ul>
@@ -45,7 +45,8 @@ class Navbar extends React.Component{
                     <Link to="/" className="decoration active logo left">Bazart</Link>
                     <div className="rigth">
                         <NameFild buttonName='Search' placeHolder="Search" 
-                        open={true} handleChange={this.props.handleChange} onClick={this.props.onClick}></NameFild>
+                        open={true} handleChange={this.props.handleChange || null} 
+                        onClick={this.props.onClick} use={this.props.use} data={'searchFild'}></NameFild>
                     </div>
                     {this.renderItens()}
                 </div>

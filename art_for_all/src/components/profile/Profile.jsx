@@ -78,9 +78,9 @@ class Profile extends React.Component{
         })
     }
 
-    handleChange(event){
+    handleChange(event, data){
         this.setState({
-            searchFild : event.target.value
+            [data] : event.target.value
         })
     }
 
@@ -108,7 +108,8 @@ class Profile extends React.Component{
             <div className="profile-background">
                 <div>
                     <Navbar logado={this.state.logado} userName={this.state.userName} 
-                    logout={this.logout} handleChange={this.handleChange} onClick={this.onClick}></Navbar>
+                    logout={this.logout} handleChange={this.handleChange} 
+                    onClick={this.onClick} use={true}></Navbar>
                 </div>
                 <div>
                     <ProfileInfo 

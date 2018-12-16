@@ -49,7 +49,8 @@ class EditableTagBox extends React.Component{
                 <div className="row">Tags
                     {this.renderButtons(this.props.empty)}
                 </div>
-                <NameFild buttonName='Add' placeHolder="Tags name" onClick={this.props.addTag} open={this.state.open} handleChange={this.props.handleChange} data="tag"></NameFild>
+                <NameFild buttonName='Add' placeHolder="Tags name" onClick={this.props.addTag} 
+                open={this.state.open} handleChange={this.props.handleChange} data="tag" use={true}></NameFild>
                 <section className="flex-wrap">
                     <div>{this.renderTags(this.props.tagsName)}</div>
                 </section>
