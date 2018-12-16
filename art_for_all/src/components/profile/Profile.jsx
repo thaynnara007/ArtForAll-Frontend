@@ -59,12 +59,7 @@ class Profile extends React.Component{
             ToastStore.error("Unauthorized");
         })
     }
-
-    logout(){
-        localStorage.clear();
-        this.props.history.push('/')
-    }
-
+    
     editFile(event, data){
         
         var file = undefined;
