@@ -1,7 +1,6 @@
 import React from 'react';
 import './ProfilePicture.css';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import image from '../../img/me3.png';
 
 class ProfilePicture extends React.Component{
 
