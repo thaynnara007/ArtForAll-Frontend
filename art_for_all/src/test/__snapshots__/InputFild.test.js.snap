@@ -28,4 +28,32 @@ exports[`INPUT FILD - Testing with snapshots TEST02:render correctly input fild 
 </div>
 `;
 
+exports[`INPUT FILD - Testing with snapshots TEST03:render correctly input fild component with placeHolder=newPlaceHolder and type=password 1`] = `
+<div
+  className="input-group mb-3"
+>
+  <input
+    aria-describedby="basic-addon2"
+    aria-label="Recipient's username"
+    className="form-control"
+    onChange={[Function]}
+    placeholder="newPlaceHolder"
+    type="password"
+  />
+</div>
+`;
 
+exports[`INPUT FILD - Testing with snapshots TEST03:render correctly input fild component with placeHolder=newPlaceHolder and type=text 1`] = `
+<div
+  className="input-group mb-3"
+>
+  <input
+    aria-describedby="basic-addon2"
+    aria-label="Recipient's username"
+    className="form-control"
+    onChange={[Function]}
+    placeholder="newPlaceHolder"
+    type="text"
+  />
+</div>
+`;

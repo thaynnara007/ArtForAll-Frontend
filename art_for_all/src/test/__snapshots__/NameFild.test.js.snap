@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NAME FILD -Testing with snapshots TEST01: it should render correctly 1`] = `""`;
+
+exports[`NAME FILD -Testing with snapshots TEST02: it should render correctly with placeHolder=newPlaceHolder 1`] = `""`;

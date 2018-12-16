@@ -10,4 +10,9 @@ describe("NAME FILD -Testing with snapshots", () => {
         const nameFild = shallow(<NameFild></NameFild>);
         expect(nameFild).toMatchSnapshot();
     })
+
+    it('TEST02: it should render correctly with placeHolder=newPlaceHolder' , () =>{
+        const nameFild = shallow(<NameFild placeHolder="newPlaceHolder"></NameFild>);
+        expect(nameFild).toMatchSnapshot();
+    })
 })

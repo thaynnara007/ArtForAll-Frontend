@@ -15,4 +15,14 @@ describe("INPUT FILD - Testing with snapshots", () =>{
         const InputFildComponent = shallow(<InputFild type="password"/>);
         expect(InputFildComponent).toMatchSnapshot();
     });
+
+    it('TEST03:render correctly input fild component with placeHolder=newPlaceHolder and type=password', () => {  
+        const InputFildComponent = shallow(<InputFild type="password" placeHolder="newPlaceHolder"/>);
+        expect(InputFildComponent).toMatchSnapshot();
+    });
+
+    it('TEST03:render correctly input fild component with placeHolder=newPlaceHolder and type=text', () => {  
+        const InputFildComponent = shallow(<InputFild type="text" placeHolder="newPlaceHolder"/>);
+        expect(InputFildComponent).toMatchSnapshot();
+    });
 })
