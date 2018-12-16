@@ -25,7 +25,6 @@ class Profile extends React.Component{
             soughtArt:"",
             profileOwner: this.props.match.params.userName
         }
-        this.logout = this.logout.bind(this);
         this.onClick = this.onClick.bind(this);
         this.editFile = this.editFile.bind(this);
         this.openNewArt = this.openNewArt.bind(this);
