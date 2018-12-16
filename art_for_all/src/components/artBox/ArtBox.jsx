@@ -1,7 +1,6 @@
 import React from 'react';
 import Art from '../art/Art';
 import EditableDetailsArtPage from '../detailsPage/EditableDetailsArtPage';
-import NameFild from '../forms/nameFild/NameFild';
 import './ArtBox.css';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 

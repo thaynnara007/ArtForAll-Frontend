@@ -1,7 +1,6 @@
 import React from 'react';
 import firebase from '../../firebase';
 import DetailsArtPage from '../detailsPage/DetailsArtPage';
-import EditableDetailsArtPage from '../detailsPage/EditableDetailsArtPage';
 import './Art.css';
 
 class Art extends React.Component{

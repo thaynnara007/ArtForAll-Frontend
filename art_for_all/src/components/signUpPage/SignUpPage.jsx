@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import Api from '../Api';
 import {ToastContainer, ToastStore} from 'react-toasts';
 import './SignUpPage.css';
@@ -49,6 +48,7 @@ class SignUpPage extends React.Component{
             }) .catch((error) => {
                 console.log(error); 
                 ToastStore.error(error.message);
+                ToastStore.error("Probably there is already someone with this username or password")
             });
         }else ToastStore.warning("There are filds still empty!");
     }

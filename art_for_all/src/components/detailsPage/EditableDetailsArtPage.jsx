@@ -161,12 +161,10 @@ class EditableDetailsArtPage extends React.Component{
                     console.log(error);
                     ToastStore.error(error.message);
                 })
-        }
-        else ToastStore.warning("There are filds still empty!");
+        }else ToastStore.warning("There are filds still empty!");
     }
 
     renderImage(){
-        
         return (<img className="img-size" src={(this.state.url != null) ? this.state.url : image} alt=""></img>)
     }
 
