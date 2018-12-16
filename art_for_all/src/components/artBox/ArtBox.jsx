@@ -19,12 +19,19 @@ class ArtBox extends React.Component{
     renderArts(){
 
         if(this.state.open){
-           
-            var arts = this.props.arts.map((art, num) =>{
-                return (<Art key={num} artName={art.artName} 
-                    userName={this.props.userName} profileOwner={this.props.profileOwner}></Art>)
-            })
-            return arts;
+                if(this.props.soughtArt === "") var artsName = this.props.arts
+                else{
+                    var artsName = this.props.arts.filter((art) =>{
+                        return art.artName === this.props.soughtArt
+                    })
+                }  
+                var arts = artsName.map((art, num) =>{
+                    
+                    return (<Art key={num} artName={art.artName} soughtArt={this.props.soughtArt}
+                        userName={this.props.userName} profileOwner={this.props.profileOwner}></Art>)
+                })
+                return arts;
+                
         }else return null
     }
 

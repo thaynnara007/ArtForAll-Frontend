@@ -9,7 +9,9 @@ class NameFild extends React.Component{
         if(this.props.open){
             return(
                 <div className="input-group mb-3 space">
-                    <input type="text" className="form-control" placeholder={this.props.placeHolder} aria-label="Recipient's username" aria-describedby="basic-addon2" onChange={(event) => this.props.handleChange(event, this.props.data)}></input>
+                    <input type="text" className="form-control" placeholder={this.props.placeHolder} 
+                    aria-label="Recipient's username" aria-describedby="basic-addon2" 
+                    onChange={(event) => this.props.handleChange(event, this.props.data)}></input>
                     <div className="input-group-append">
                         <button className="btn btn-outline-info" type="button" onClick={this.props.onClick}>{this.props.buttonName}</button>
                     </div>

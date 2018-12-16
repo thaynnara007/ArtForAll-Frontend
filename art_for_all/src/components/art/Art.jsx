@@ -11,6 +11,7 @@ class Art extends React.Component{
         this.state={
             openDetails: false,
             image: null,
+            previousImage : "",
         }
         this.displayImage = this.displayImage.bind(this);
         this.renderImage = this.renderImage.bind(this);
@@ -23,6 +24,7 @@ class Art extends React.Component{
     }
 
     renderImage(){
+        this.displayImage();
         return (<img className="art-img-size" src={this.state.image} alt={this.props.artName} onClick={this.showModal}></img>)
     }
 
@@ -45,7 +47,7 @@ class Art extends React.Component{
         var artRef = storage.child(path);
 
         artRef.getDownloadURL().then((url) =>{
-
+            
             this.setState({
                 image : url
             })
@@ -56,6 +58,13 @@ class Art extends React.Component{
     }
 
     render(){
+       
+        if(this.props.soughtArt !== this.state.previousImage ) {
+            this.displayImage()
+            this.setState({
+                previousImage : this.props.soughtArt
+            })
+        }
         return(
             <div>
                 <div>

@@ -21,12 +21,16 @@ class Profile extends React.Component{
             followers: 0,
             openNewArt: false,
             logado: true,
+            searchFild : "",
+            soughtArt:"",
             profileOwner: this.props.match.params.userName
         }
         this.logout = this.logout.bind(this);
+        this.onClick = this.onClick.bind(this);
         this.editFile = this.editFile.bind(this);
         this.openNewArt = this.openNewArt.bind(this);
         this.closeNewArt = this.closeNewArt.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount(){
@@ -74,6 +78,18 @@ class Profile extends React.Component{
         })
     }
 
+    handleChange(event){
+        this.setState({
+            searchFild : event.target.value
+        })
+    }
+
+    onClick(){
+        this.setState({
+            soughtArt: this.state.searchFild
+        })
+    }
+
     openNewArt(){
         this.setState({
             openNewArt: true
@@ -91,7 +107,8 @@ class Profile extends React.Component{
         return(
             <div className="profile-background">
                 <div>
-                    <Navbar logado={this.state.logado} userName={this.state.userName} logout={this.logout}></Navbar>
+                    <Navbar logado={this.state.logado} userName={this.state.userName} 
+                    logout={this.logout} handleChange={this.handleChange} onClick={this.onClick}></Navbar>
                 </div>
                 <div>
                     <ProfileInfo 
@@ -104,6 +121,7 @@ class Profile extends React.Component{
                 </div>
                 <div className="profile-arts">
                     <Artbox
+                        soughtArt={this.state.soughtArt}
                         profileOwner={this.state.profileOwner}
                         arts={this.state.arts}
                         numberArts={this.state.numberArts}

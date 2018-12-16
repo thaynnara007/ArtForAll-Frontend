@@ -44,7 +44,8 @@ class Navbar extends React.Component{
                 <div className="box">
                     <Link to="/" className="decoration active logo left">Bazart</Link>
                     <div className="rigth">
-                        <NameFild buttonName='Search' placeHolder="Search" open={true}></NameFild>
+                        <NameFild buttonName='Search' placeHolder="Search" 
+                        open={true} handleChange={this.props.handleChange} onClick={this.props.onClick}></NameFild>
                     </div>
                     {this.renderItens()}
                 </div>
