@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`INFO ART- testing state screnshot TEST01: it should render correctly 1`] = `
+<div
+  className="container note"
+>
+  <details
+    className="font"
+  >
+    <summary
+      className="font-weight-bold summary-margin"
+    >
+      Informations
+    </summary>
+    <div
+      className="back"
+    >
+      <label
+        className="label-style"
+      >
+        Art Name:
+      </label>
+    </div>
+    <p />
+    <div
+      className="back "
+    >
+      <label
+        className="label-style"
+      >
+        Author:
+      </label>
+    </div>
+    <p />
+    <div
+      className="back"
+    >
+      <label
+        className="label-style"
+      >
+        Collection:
+      </label>
+    </div>
+    <p />
+    <div
+      className="back"
+    >
+      <label
+        className="label-style"
+      >
+        Description:
+      </label>
+    </div>
+    <p />
+    <div
+      className="back"
+    >
+      <label
+        className="label-style"
+      >
+        Contact:
+      </label>
+    </div>
+    <p />
+  </details>
+  <TagBox
+    tagsName={Array []}
+  />
+</div>
+`;
+
+exports[`INFO ART- testing state screnshot TEST02: it should render correctly with info 1`] = `
+<div
+  className="container note"
+>
+  <details
+    className="font"
+  >
+    <summary
+      className="font-weight-bold summary-margin"
+    >
+      Informations
+    </summary>
+    <div
+      className="back"
+    >
+      <label
+        className="label-style"
+      >
+        Art Name:
+      </label>
+    </div>
+    <p>
+      aaaa
+    </p>
+    <div
+      className="back "
+    >
+      <label
+        className="label-style"
+      >
+        Author:
+      </label>
+    </div>
+    <p>
+      bbbb
+    </p>
+    <div
+      className="back"
+    >
+      <label
+        className="label-style"
+      >
+        Collection:
+      </label>
+    </div>
+    <p>
+      cccc
+    </p>
+    <div
+      className="back"
+    >
+      <label
+        className="label-style"
+      >
+        Description:
+      </label>
+    </div>
+    <p>
+      ddddd
+    </p>
+    <div
+      className="back"
+    >
+      <label
+        className="label-style"
+      >
+        Contact:
+      </label>
+    </div>
+    <p>
+      eeee
+    </p>
+  </details>
+  <TagBox
+    tagsName={Array []}
+  />
+</div>
+`;
