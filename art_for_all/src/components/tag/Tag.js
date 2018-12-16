@@ -7,23 +7,16 @@ class Tag extends React.Component{
     constructor(props){
         super(props);
         this.state ={
-            color: this.putColor(),
-            hasAcolor: false
+            color: null,
         }
-        this.putColor = this.putColor.bind(this);
     }
 
-    putColor(){
+    componentDidMount(){
+        var color = RandomColor();
 
-        if (this.hasAcolor) return this.state.color;
-        else{
-            var newColor = RandomColor();
-            this.setState({
-                color: newColor,
-                hasAcolor: true
-            })
-            return newColor
-        }
+        this.setState({
+            color: color
+        })
     }
 
     render(){
