@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TEXT AREA - Testing with snapshots TEST01: it shoul render correctly 1`] = `
+<div
+  className="form-group"
+>
+  <textarea
+    className="form-control"
+    onChange={[Function]}
+  />
+</div>
+`;
+
+exports[`TEXT AREA - Testing with snapshots TEST02: it shoul render correctly with placeHolder=hello there 1`] = `
+<div
+  className="form-group"
+>
+  <textarea
+    className="form-control"
+    onChange={[Function]}
+    placeholder="hello there"
+  />
+</div>
+`;
