@@ -1,6 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`render correctly input fild component with type=password 1`] = `
+exports[`INPUT FILD - Testing with snapshots TEST01:render correctly input fild component with type=text 1`] = `
+<div
+  className="input-group mb-3"
+>
+  <input
+    aria-describedby="basic-addon2"
+    aria-label="Recipient's username"
+    className="form-control"
+    onChange={[Function]}
+    type="text"
+  />
+</div>
+`;
+
+exports[`INPUT FILD - Testing with snapshots TEST02:render correctly input fild component with type=password 1`] = `
 <div
   className="input-group mb-3"
 >
@@ -14,16 +28,4 @@ exports[`render correctly input fild component with type=password 1`] = `
 </div>
 `;
 
-exports[`render correctly input fild component with type=text 1`] = `
-<div
-  className="input-group mb-3"
->
-  <input
-    aria-describedby="basic-addon2"
-    aria-label="Recipient's username"
-    className="form-control"
-    onChange={[Function]}
-    type="text"
-  />
-</div>
-`;
+
