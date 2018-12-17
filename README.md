@@ -14,7 +14,7 @@ ArtForAll will be a site that  has as a goal make easier the purchases and sales
 - allows a user to register how many arts they want to ( it will be saved on the data base (mongoDB and firebase ))
 - allows a user to see details about all of the arts that they had registered( comunication between brothers components )
 - allows a user to search for one of their arts, in the search field at their profile(comunication between brothers components )
-- allows a user to do logout from the site
+- allows a user to logout from the site
 
 
 ---
